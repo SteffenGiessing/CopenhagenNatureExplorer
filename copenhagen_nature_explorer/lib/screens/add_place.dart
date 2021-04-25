@@ -1,6 +1,10 @@
+import 'dart:io';
+import 'package:provider/provider.dart';
+import '../provider/user_places.dart';
 import 'package:copenhagen_nature_explorer/screens/place_details.dart';
 import 'package:flutter/material.dart';
 import '../widgets/imageHandler.dart';
+
 class AddPlaceScreen extends StatefulWidget {
   static const routeName = "/add-place";
 
@@ -10,6 +14,22 @@ class AddPlaceScreen extends StatefulWidget {
 
 class _AddPlaceScreenState extends State<AddPlaceScreen> {
   final _titleController = TextEditingController();
+
+  File _pickedImage;
+
+  void _selectImage(File pickedImage) {
+    _pickedImage = pickedImage;
+  }
+
+  void _savePlace() {
+    if (_titleController.text.isEmpty || _pickedImage == null) {
+      //TODO: Add Snackbar or toast message
+      return;
+    }
+    Provider.of<CreatedPlaces>(context, listen: false)
+        .addPlace(_titleController.text, _pickedImage);
+    Navigator.of(context).pop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +51,10 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                       decoration: InputDecoration(labelText: "Title"),
                       controller: _titleController,
                     ),
-                    SizedBox(height: 10,),
-                    ImageInput()
+                    SizedBox(
+                      height: 10,
+                    ),
+                    ImageInput(_selectImage),
                   ],
                 ),
               ),
@@ -45,9 +67,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
             ),
             label: Text("okay"),
             icon: Icon(Icons.add),
-            onPressed: () {
-              print("works");
-            },
+            onPressed: _savePlace,
           ),
         ],
       ),

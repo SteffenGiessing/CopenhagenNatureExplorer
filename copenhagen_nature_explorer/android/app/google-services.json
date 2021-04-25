@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "839721052979",
+    "firebase_url": "https://copenhagennatureexplorer-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "copenhagennatureexplorer",
+    "storage_bucket": "copenhagennatureexplorer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839721052979:android:53ea38f43fefc54652ec46",
+        "android_client_info": {
+          "package_name": "com.example.copenhagen_nature_explorer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "839721052979-90vecge526vjqgtmasnt2os6r7ufn0r1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDomOi1wgkBVo2lGhi_t8g5-1fXqAvjBN0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "839721052979-90vecge526vjqgtmasnt2os6r7ufn0r1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,29 +1,40 @@
-import 'dart:async';
-import 'package:copenhagen_nature_explorer/model/place.dart';
+import 'package:copenhagen_nature_explorer/locator.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import './provider/user_places.dart';
 import './screens/feed.dart';
 import './screens/add_place.dart';
-void main() => runApp(MyApp());
+import 'package:copenhagen_nature_explorer/views/homeView.dart';
+import 'package:copenhagen_nature_explorer/views/loginView.dart';
+import 'package:copenhagen_nature_explorer/views/profileView.dart';
+import 'package:copenhagen_nature_explorer/views/registerView.dart';
+import 'package:copenhagen_nature_explorer/views/explorerView.dart';
+
+
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupServices();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Provider(
-      create: (_) => Place(),
-      child: MaterialApp(
+    return MaterialApp(
         title: "Find you adventure",
         theme: ThemeData(
-          primarySwatch: Colors.green,
-          accentColor: Colors.lightGreenAccent
-          ),
+            primarySwatch: Colors.green, accentColor: Colors.lightGreenAccent),
         home: PlacesListScreen(),
         routes: {
           AddPlaceScreen.routeName: (ctx) => AddPlaceScreen(),
+          HomeView.route: (context) => HomeView(),
+          LoginView.route: (context) => LoginView(),
+          ProfileView.route: (context) => ProfileView(),
+          RegisterView.route: (context) => RegisterView(),
+          ExplorerView.route: (context) => ExplorerView(),
         },
-      ),
+        initialRoute: LoginView.route,
     );
   }
 }

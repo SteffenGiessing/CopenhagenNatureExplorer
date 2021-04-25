@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import '../model/place.dart';
+import '../models/place.dart';
 
 class AddPlace with ChangeNotifier {
   List<Place> _items = [];
