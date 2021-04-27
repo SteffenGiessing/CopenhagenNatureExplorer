@@ -37,13 +37,13 @@ class UserController {
       {String email, String password, String displayName}) async {
     _currentUser = await _authRepo.registerEmailAndPassword(
         email: email, password: password, displayName: displayName);
+    _authRepo.getUser();
   }
 
   Future<void> signInWithEmailAndPassword(
       {String email, String password}) async {
     _currentUser = await _authRepo.signInWithEmailAndPassword(
         email: email, password: password);
-    _authRepo.getUser();
     _currentUser.avatarUrl = await getDownloadUrl();
   }
 

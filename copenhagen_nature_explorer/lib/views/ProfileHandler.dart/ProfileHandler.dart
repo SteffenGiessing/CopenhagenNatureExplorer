@@ -3,7 +3,6 @@ import 'package:copenhagen_nature_explorer/view_controller/user_controller.dart'
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:copenhagen_nature_explorer/locator.dart';
-import 'package:path/path.dart';
 
 class ProfileHandler extends StatefulWidget {
   final UserModel currentUser;

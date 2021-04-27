@@ -1,15 +1,15 @@
 import 'package:copenhagen_nature_explorer/repository/database_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:copenhagen_nature_explorer/models/userModel.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthRepo {
   //final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final CollectionReference databaseRef =
-      Firestore.instance.collection("users");
+      FirebaseFirestore.instance.collection("users");
+  // final CollectionReference databaseRef =
+  //     Firestore.instance.collection("users");
   AuthRepo();
 
   // Future<void> signInWithGoogle() async {
@@ -28,13 +28,12 @@ class AuthRepo {
 
   Future<UserModel> registerEmailAndPassword(
       {String email, String password, String displayName}) async {
-    final FirebaseUser newUser = (await _auth.createUserWithEmailAndPassword(
+    final UserCredential newUser = await _auth.createUserWithEmailAndPassword(
       email: email,
       password: password,
-    ))
-        .user;
+    );
     if (newUser != null) {
-      await DatabaseRepo(uid: newUser.uid).createUserAccount(displayName);
+      await FirebaseRepo(uid: newUser.user.uid).createUserAccount(displayName);
       print("Success");
     } else {
       print("User havent been created....");
@@ -43,24 +42,22 @@ class AuthRepo {
 
   Future<UserModel> signInWithEmailAndPassword(
       {String email, String password}) async {
-    await _auth.signInWithEmailAndPassword(
-        email: email, password: password);
+    await _auth.signInWithEmailAndPassword(email: email, password: password);
     return getUser();
-
   }
 
   Future<UserModel> getUser() async {
-    var firebaseUser = await _auth.currentUser();
+    var firebaseUser = await _auth.currentUser;
     var userName =
-        await DatabaseRepo(uid: firebaseUser.uid).getUserDisplayName();
+        await FirebaseRepo(uid: firebaseUser.uid).getUserDisplayName();
     print(userName);
     return UserModel(uid: firebaseUser.uid, displayName: userName);
   }
 
   Future<bool> validatePassword(String password) async {
-    var firebaseUser = await _auth.currentUser();
+    var firebaseUser = await _auth.currentUser;
 
-    var authCredentials = EmailAuthProvider.getCredential(
+    var authCredentials = EmailAuthProvider.credential(
         email: firebaseUser.email, password: password);
 
     try {
@@ -74,7 +71,7 @@ class AuthRepo {
   }
 
   Future<void> updatePassword(String password) async {
-    var firebaseUser = await _auth.currentUser();
+    var firebaseUser = await _auth.currentUser;
     firebaseUser.updatePassword(password);
   }
 }

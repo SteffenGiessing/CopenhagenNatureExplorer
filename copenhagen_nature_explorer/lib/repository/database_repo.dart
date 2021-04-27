@@ -1,23 +1,43 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:copenhagen_nature_explorer/locator.dart';
+import 'dart:io';
 
-class DatabaseRepo {
+class FirebaseRepo {
   final String uid;
-  DatabaseRepo({this.uid});
+  FirebaseRepo({this.uid});
 
-  final CollectionReference databaseRef =
-      Firestore.instance.collection("users");
+  CollectionReference firestore =
+      FirebaseFirestore.instance.collection("users");
+  CollectionReference firestorePost =
+      FirebaseFirestore.instance.collection("user posts");
 
   Future createUserAccount(String displayName) async {
-    return await databaseRef.document(uid).setData({
+    return await firestore.doc(uid).set({
       "displayName": displayName,
     });
   }
 
   Future getUserDisplayName() async {
     String displayName;
-    await databaseRef.document(uid).get().then((snapShot) {
-      displayName = snapShot.data["displayName"].toString();
+    await firestore.doc(uid).get().then((snapShot) {
+      displayName = snapShot["displayName"].toString();
     });
     return displayName;
+  }
+
+  Future<void> addPost(
+      {String uid,
+      String displayName,
+      String infoText,
+      double latitude,
+      double longitude}) async {
+    await firestorePost.doc(uid).set({
+      "uid": uid,
+      "displayName": displayName,
+      "infoText": infoText,
+      "latitude": latitude,
+      "longitude": longitude,
+    });
+  
   }
 }

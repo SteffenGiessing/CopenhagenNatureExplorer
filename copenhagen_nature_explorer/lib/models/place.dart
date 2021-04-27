@@ -6,7 +6,7 @@ class LocationAttributes {
   final double longitude;
   final String address;
 
-  LocationAttributes({
+   const LocationAttributes({
     @required this.latitude,
     @required this.longitude,
     this.address,
@@ -19,7 +19,7 @@ class Place {
   final String description;
   final File image;
 
-  Place({
+   Place({
     @required this.id,
     @required this.description,
     @required this.location,

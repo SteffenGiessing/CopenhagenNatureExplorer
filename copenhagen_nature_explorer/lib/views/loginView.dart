@@ -4,7 +4,6 @@ import 'package:copenhagen_nature_explorer/views/homeView.dart';
 import 'package:copenhagen_nature_explorer/views/registerView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'dart:io';
 
 class LoginView extends StatefulWidget {
   static String route = "login";
@@ -107,59 +106,16 @@ class _LoginViewState extends State<LoginView> {
                                 onPressed: () async {
                                     Navigator.pushNamed(context, RegisterView.route);
                                 }),
-
-                            // ElevatedButton.Icon(
-                            //   color: Theme.of(context).primaryColor,
-                            //   icon: Icon(Icons.ac_unit,
-                            //   ),
-                            //   label: Text(
-                            //     "Register",
-                            //     style: textTheme.button,
-                            //   ),
-                            //   onPressed: () {},
-
-                            //   )
-                          ]))),
-                )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
         ),
       ),
     );
-    // return Row(children: <Widget>[
-    //    Container(
-    //     decoration: BoxDecoration(
-    //       image: DecorationImage(
-    //         image: NetworkImage("https://source.unsplash.com/random"),
-    //         fit: BoxFit.cover,
-    //       ),
-    //     ),
-    //    ),
-    // child: Container(
-    //   decoration: BoxDecoration(
-    //     color: Colors.green,
-    //     backgroundBlendMode: BlendMode.darken,
-    //   ),
-    // ),
-    //     Expanded(
-    //       child: TextButton.icon(
-    //         onPressed: () async {
-    //           try {
-    //             await locator.get<UserController>().
-    //             signInWithEmailAndPassword(
-    //               email: emailController.text,
-    //               password:  passwordController.text
-    //             );
-    //           Navigator.pushNamed(context, HomeView.route);
-    //           }catch (e){
-    //             print("Something went wrong");
-    //           }
-    //         },
-    //         icon: Icon(Icons.add),
-    //         label: Text("Hej"),
-    //         ),
-    //       ),
-    // ]);
   }
 }

@@ -1,19 +1,18 @@
 import 'package:copenhagen_nature_explorer/locator.dart';
+import 'package:copenhagen_nature_explorer/views/addpostView.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import './provider/user_places.dart';
 import './screens/feed.dart';
 import './screens/add_place.dart';
 import 'package:copenhagen_nature_explorer/views/homeView.dart';
 import 'package:copenhagen_nature_explorer/views/loginView.dart';
 import 'package:copenhagen_nature_explorer/views/profileView.dart';
 import 'package:copenhagen_nature_explorer/views/registerView.dart';
-import 'package:copenhagen_nature_explorer/views/explorerView.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:copenhagen_nature_explorer/views/addpostView.dart';
 
-
-
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   setupServices();
   runApp(MyApp());
 }
@@ -22,84 +21,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: "Find you adventure",
-        theme: ThemeData(
-            primarySwatch: Colors.green, accentColor: Colors.lightGreenAccent),
-        home: PlacesListScreen(),
-        routes: {
-          AddPlaceScreen.routeName: (ctx) => AddPlaceScreen(),
-          HomeView.route: (context) => HomeView(),
-          LoginView.route: (context) => LoginView(),
-          ProfileView.route: (context) => ProfileView(),
-          RegisterView.route: (context) => RegisterView(),
-          ExplorerView.route: (context) => ExplorerView(),
-        },
-        initialRoute: LoginView.route,
+      title: "Find you adventure",
+      theme: ThemeData(
+          primarySwatch: Colors.green, accentColor: Colors.lightGreenAccent),
+      home: PlacesListScreen(),
+      routes: {
+        AddPlaceScreen.routeName: (ctx) => AddPlaceScreen(),
+        HomeView.route: (context) => HomeView(),
+        LoginView.route: (context) => LoginView(),
+        ProfileView.route: (context) => ProfileView(),
+        RegisterView.route: (context) => RegisterView(),
+        AddPostView.route: (context) => AddPostView(),
+      },
+      initialRoute: LoginView.route,
     );
   }
 }
-
-// class MyHomePage extends StatefulWidget {
-//   MyHomePage({Key key, this.title}) : super(key: key);
-
-//   final String title;
-
-//   @override
-//   _MyHomePageState createState() => _MyHomePageState();
-// }
-
-// class _MyHomePageState extends State<MyHomePage> {
-
-//   final CameraPosition _initialPosition = CameraPosition(target: LatLng(55.704212, 12.530581));
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: GoogleMap(
-//         initialCameraPosition: _initialPosition,
-//         mapType: MapType.normal,
-//       ),
-//       floatingActionButton: FloatingActionButton(
-//         onPressed: () {},
-//         child: Icon(Icons.zoom_out),
-//       ),
-//     );
-//   }
-// }
-
-// // class MapSampleState extends State<MapSample> {
-// //   Completer<GoogleMapController> _controller = Completer();
-
-// //   static final CameraPosition _kGooglePlex = CameraPosition(
-// //     target: LatLng(37.42796133580664, -122.085749655962),
-// //     zoom: 14.4746,
-// //   );
-
-// //   static final CameraPosition _kLake = CameraPosition(
-// //       bearing: 192.8334901395799,
-// //       target: LatLng(37.43296265331129, -122.08832357078792),
-// //       tilt: 59.440717697143555,
-// //       zoom: 19.151926040649414);
-
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return new Scaffold(
-// //       body: GoogleMap(
-// //         mapType: MapType.normal,
-// //         initialCameraPosition: _kGooglePlex,
-// //         onMapCreated: (GoogleMapController controller) {
-// //           _controller.complete(controller);
-// //         },
-// //       ),
-// //       floatingActionButton: FloatingActionButton.extended(
-// //         onPressed: _goToTheLake,
-// //         label: Text("To The Lake"),
-// //         icon: Icon(Icons.directions_boat),
-// //       ),
-// //     );
-// //   }
-
-// //   Future<void> _goToTheLake() async {
-// //     final GoogleMapController controller = await _controller.future;
-// //     controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
-// //   }
-// // }

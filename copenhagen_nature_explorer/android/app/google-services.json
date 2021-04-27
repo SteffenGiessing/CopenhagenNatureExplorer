@@ -15,13 +15,21 @@
       },
       "oauth_client": [
         {
+          "client_id": "839721052979-qsgq9js0sddhsvh9cs29aqcjau99cm3n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.copenhagen_nature_explorer",
+            "certificate_hash": "d32b1e18fbecff3a68ba8b66a1e330e714c86b97"
+          }
+        },
+        {
           "client_id": "839721052979-90vecge526vjqgtmasnt2os6r7ufn0r1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDomOi1wgkBVo2lGhi_t8g5-1fXqAvjBN0"
+          "current_key": "AIzaSyCm0bvb3twehtSrWU_aKc91vgSZqUgAXbs"
         }
       ],
       "services": {
