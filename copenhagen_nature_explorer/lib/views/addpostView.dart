@@ -108,12 +108,12 @@ class _AddPostState extends State<AddPostView> {
                             ),
                             onPressed: () async {
                               try {
-                                print("hej");
                                 await locator.get<PostController>().createPost(
                                     infoText: _infoText.text, image: _image);
+
                                 Navigator.pushNamed(context, HomeView.route);
                               } catch (e) {
-                                print("Something went wrong");
+                               // print("Something went wrong");
                               }
                             },
                           ),

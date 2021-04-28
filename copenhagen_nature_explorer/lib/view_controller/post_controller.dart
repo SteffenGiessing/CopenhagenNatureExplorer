@@ -38,13 +38,17 @@ class PostController {
     String uid = _currentUser.uid;
     String displayName = _currentUser.displayName;
     _locationData = await location.getLocation();
+    String fileNameCreator =
+        "$displayName-${_locationData.latitude}-${_locationData.longitude}";
+    String getImageUrl = await _storageRepo.uploadPostImage(image,fileNameCreator);
     await _fireRepo.addPost(
-        uid: uid,
-        displayName: displayName,
-        infoText: infoText,
-        latitude: _locationData.latitude,
-        longitude: _locationData.longitude);
-    await _storageRepo.uploadPostFile(image, uid);
-    return ;
+      uid: uid,
+      image: image,
+      displayName: displayName,
+      infoText: infoText,
+      latitude: _locationData.latitude,
+      longitude: _locationData.longitude,
+      imageUrl: getImageUrl,
+    );
   }
 }
