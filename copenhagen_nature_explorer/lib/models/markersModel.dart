@@ -8,8 +8,6 @@ class MarkerCreator {
   MarkerCreator(
     {
       this.infoText,
-      this.latitude,
-      this.longitude,
       this.displayName,
       this.pictureUrl
     });

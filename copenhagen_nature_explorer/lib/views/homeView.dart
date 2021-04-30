@@ -1,17 +1,19 @@
 import 'dart:async';
+import 'package:copenhagen_nature_explorer/view_controller/markers_controller.dart';
 import 'package:copenhagen_nature_explorer/views/addpostView.dart';
 import 'package:copenhagen_nature_explorer/views/profileView.dart';
-import 'package:flutter/material.dart';
 import 'package:copenhagen_nature_explorer/repository/maps_repo.dart';
 import 'package:copenhagen_nature_explorer/models/place.dart';
+import 'package:copenhagen_nature_explorer/locator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter/services.dart';
+import 'dart:io';
+import 'package:copenhagen_nature_explorer/models/markersModel.dart';
 
 class HomeView extends StatefulWidget {
   static String route = "home";
   final LocationAttributes starterLocation;
-
   //55.6837
   HomeView(
       [this.starterLocation = const LocationAttributes(
@@ -23,36 +25,45 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  Set<Marker> markers = new Set();
   Completer<GoogleMapController> _controller = Completer();
-  String _previewImageUrl;
   final picker = ImagePicker();
+  MarkerCreator markerCreator = MarkerCreator();
 
   // final locData = await Location().getLocation();
   @override
   void initState() {
     super.initState();
+    callMarkers();
     _getCurrentLocation();
+    //sleep(const Duration(seconds: 5));
+  }
+
+  void callMarkers() async {
+    Map<String, LatLng> fetchedMarkers =
+        await locator.get<MarkersController>().createMarkers();
+    _createMarker(fetchedMarkers);
   }
 
   Future<void> _getCurrentLocation() async {
     final staticMapImageUrl = LocationFinder.generateLocation(
         latitude: 12.57160, longitude: 55.68332);
-    setState(() {
-      _previewImageUrl = staticMapImageUrl;
+  }
+
+  Marker _createMarker(Map<String, LatLng> fetchedMarkers) {
+    fetchedMarkers.forEach((key, value) {
+      Marker resultMarker = Marker(
+          markerId: MarkerId(key),
+          position: LatLng(value.latitude, value.longitude),
+          onTap: () async {
+            await locator.get<MarkersController>().getMarkerInfo(key: key);
+            showAddPost();
+          });
+      setState(() {
+        markers.add(resultMarker);
+      });
     });
   }
-
-  Set<Marker> _createMarker() {
-    return {
-      Marker(
-          markerId: MarkerId("FirstMarker"),
-          position: LatLng(55.7046696, 12.5314824),
-          infoWindow: InfoWindow(onTap: () {
-            showAddPost();
-          })),
-    };
-  }
-
 
   Set<Polygon> polygonMap() {
     List<LatLng> polygonCordinats = new List();
@@ -100,13 +111,15 @@ class _HomeViewState extends State<HomeView> {
             CameraPosition(target: LatLng(55.7046696, 12.5314824), zoom: 13),
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
+          Set.of(markers);
         },
-        markers: _createMarker(),
+        markers: Set.of(markers),
         mapToolbarEnabled: false,
         zoomControlsEnabled: false,
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
+        onPressed: () async {
+          await locator.get<MarkersController>().createMarkers();
           Navigator.pushNamed(context, AddPostView.route);
         },
         icon: Icon(Icons.add),
@@ -117,6 +130,7 @@ class _HomeViewState extends State<HomeView> {
   }
 
   void showAddPost() {
+    print(markerCreator.displayName);
     showGeneralDialog(
         barrierLabel: "Barrier",
         barrierDismissible: true,
@@ -139,6 +153,19 @@ class _HomeViewState extends State<HomeView> {
                           Radius.circular(20.0),
                         ),
                       ),
+                      child: Container(
+                          width: 20,
+                          height: 20,
+                          alignment: Alignment.topLeft,
+                          decoration: BoxDecoration(
+                            color: Color(0xBBFFFFFF),
+                            border: Border.all(color: Colors.grey, width: 1),
+                          ),
+                          child: Image.network(
+                            markerCreator.pictureUrl,
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                          )),
                       // child: Form(
                       //   child: Column(
                       //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -312,29 +339,29 @@ class _HomeViewState extends State<HomeView> {
 
 // ),
 
-  // void _showDialog() async {
-  //   return showDialog(
-  //       context: context,
-  //       barrierDismissible: true,
-  //       builder: (BuildContext context) {
-  //         return AlertDialog(
-  //           title: Text("AlertDialog"),
-  //           content: SingleChildScrollView(
-  //             child: ListBody(
-  //               children: <Widget>[
-  //                 Text('This is a demo alert dialog.'),
-  //                 Text('Would you like to approve of this message?'),
-  //               ],
-  //             ),
-  //           ),
-  //           actions: <Widget>[
-  //             TextButton(
-  //               child: Text("Approve"),
-  //               onPressed: () {
-  //                 Navigator.of(context).pop();
-  //               },
-  //             )
-  //           ],
-  //         );
-  //       });
-  // }
+// void _showDialog() async {
+//   return showDialog(
+//       context: context,
+//       barrierDismissible: true,
+//       builder: (BuildContext context) {
+//         return AlertDialog(
+//           title: Text("AlertDialog"),
+//           content: SingleChildScrollView(
+//             child: ListBody(
+//               children: <Widget>[
+//                 Text('This is a demo alert dialog.'),
+//                 Text('Would you like to approve of this message?'),
+//               ],
+//             ),
+//           ),
+//           actions: <Widget>[
+//             TextButton(
+//               child: Text("Approve"),
+//               onPressed: () {
+//                 Navigator.of(context).pop();
+//               },
+//             )
+//           ],
+//         );
+//       });
+// }

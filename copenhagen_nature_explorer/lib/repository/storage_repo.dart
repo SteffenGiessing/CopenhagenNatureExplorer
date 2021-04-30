@@ -50,4 +50,12 @@ class StorageRepo {
         _storage.ref().child("user/post/$imageName").getDownloadURL();
     return downloadUrl;
   }
+
+  Future<String> getMarkerPicture(String downloadUrl) async {
+    try {
+      return await _storage.ref().child("user/post/$downloadUrl").getDownloadURL();
+    } catch (Exception) {
+      print("No picture found");
+    }
+  }
 }
