@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:copenhagen_nature_explorer/locator.dart';
+import 'package:copenhagen_nature_explorer/models/markersModel.dart';
 import 'package:copenhagen_nature_explorer/models/place.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/cupertino.dart';
@@ -96,27 +97,31 @@ class FirebaseRepo {
     return latlot;
   }
 
-  Future<HashMap<String, String>> getMarkerInfo(String key) async {
+  Future<MarkerCreator> getMarkerInfo(String key) async {
     HashMap<String, String> markerInfo = new HashMap<String, String>();
+    String displayName;
+    String infoText;
+    String downloadUrl;
     var snapshot =
         await firestorePost.doc(key).get().then((querySnapshot) async {
-      querySnapshot;
-      for (var key in querySnapshot.data().keys) {
-        if (key == "displayName") {
-          String displayName = querySnapshot["displayName"];
-          markerInfo[key] = displayName;
-          
-        } else if (key == "infoText") {
-          String infoText = querySnapshot["infoText"];
-          markerInfo[key] = infoText;
-        
-        } else if (key == "downloadUrl") {
-          String downloadUrl = querySnapshot["downloadUrl"];
-          markerInfo[key] = downloadUrl;
-        }
-      }
-      print(markerInfo);
+      displayName = querySnapshot["displayName"];
+      infoText = querySnapshot["infoText"];
+      downloadUrl = querySnapshot["downloadUrl"];
+      // for (var key in querySnapshot.data().keys) {
+      //   if (key == "displayName") {
+      //     String displayName = querySnapshot["displayName"];
+      //     markerInfo[key] = displayName;
+      //   } else if (key == "infoText") {
+      //     String infoText = querySnapshot["infoText"];
+      //     markerInfo[key] = infoText;
+      //   } else if (key == "downloadUrl") {
+      //     String downloadUrl = querySnapshot["downloadUrl"];
+      //     markerInfo[key] = downloadUrl;
+      //   }
+      // }
+      print(displayName + ": " + infoText + ": " + downloadUrl);
     });
-    return markerInfo;
+    return MarkerCreator(
+        displayName: displayName, infoText: infoText, pictureUrl: downloadUrl);
   }
 }

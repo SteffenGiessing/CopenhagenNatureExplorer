@@ -5,10 +5,10 @@ import 'package:copenhagen_nature_explorer/views/profileView.dart';
 import 'package:copenhagen_nature_explorer/repository/maps_repo.dart';
 import 'package:copenhagen_nature_explorer/models/place.dart';
 import 'package:copenhagen_nature_explorer/locator.dart';
+import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 import 'package:copenhagen_nature_explorer/models/markersModel.dart';
 
 class HomeView extends StatefulWidget {
@@ -36,6 +36,7 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     callMarkers();
     _getCurrentLocation();
+
     //sleep(const Duration(seconds: 5));
   }
 
@@ -57,7 +58,7 @@ class _HomeViewState extends State<HomeView> {
           position: LatLng(value.latitude, value.longitude),
           onTap: () async {
             await locator.get<MarkersController>().getMarkerInfo(key: key);
-            showAddPost();
+            showAddPost(markerCreator);
           });
       setState(() {
         markers.add(resultMarker);
@@ -129,59 +130,78 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  void showAddPost() {
-    print(markerCreator.displayName);
+  void showAddPost(MarkerCreator markerCreator) {
+    MarkerCreator _currentMarker = locator.get<MarkersController>().markers;
+    print("print " + _currentMarker.getDisplayName.toString());
     showGeneralDialog(
-        barrierLabel: "Barrier",
-        barrierDismissible: true,
-        barrierColor: Colors.black.withOpacity(0.5),
-        transitionDuration: Duration(milliseconds: 450),
-        context: context,
-        pageBuilder: (BuildContext buildContext, Animation<double> animation,
-            Animation<double> secondary) {
-          return Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                height: 300,
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: SizedBox.expand(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Color(0xBBFFFFFF),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20.0),
-                        ),
-                      ),
-                      child: Container(
-                          width: 20,
-                          height: 20,
-                          alignment: Alignment.topLeft,
-                          decoration: BoxDecoration(
-                            color: Color(0xBBFFFFFF),
-                            border: Border.all(color: Colors.grey, width: 1),
-                          ),
-                          child: Image.network(
-                            markerCreator.pictureUrl,
-                            fit: BoxFit.cover,
-                            width: double.infinity,
-                          )),
-                      // child: Form(
-                      //   child: Column(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      //     crossAxisAlignment: CrossAxisAlignment.stretch,
-                      //     children: <Widget>[
-                      //       TextFormField(
-                      //         keyboardType: TextInputType.text,
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                    ),
-                  ),
+      barrierLabel: "Barrier",
+      barrierDismissible: true,
+      barrierColor: Colors.black.withOpacity(0.5),
+      transitionDuration: Duration(milliseconds: 450),
+      context: context,
+      pageBuilder: (BuildContext buildContext, Animation<double> animation,
+          Animation<double> secondary) {
+        return Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            height: 300,
+            padding: const EdgeInsets.all(10.0),
+            margin: EdgeInsets.only(bottom: 75, left: 12, right: 12),
+            decoration: BoxDecoration(
+              color: Colors.green,
+              border: Border.all(color: Colors.grey, width: 1)
+            ),
+            child: SizedBox.expand(
+              
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  
+                  new Text("Posted by: " +
+                _currentMarker.displayName,
+                textAlign: TextAlign.right,
+                style: TextStyle(fontSize: 10),
                 ),
-              ));
-        });
+                  new Text("Comments: " + _currentMarker.infoText,
+                  textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 10),
+                ),
+              Image.network(
+                _currentMarker.pictureUrl,
+                alignment: Alignment.centerLeft,
+              ),
+          
+              
+              
+                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                // crossAxisAlignment: CrossAxisAlignment.stretch,                
+                // TextFormField(
+                // )
+                // ),
+                ],
+              ),
+            // margin: EdgeInsets.only(bottom: 50, left: 12, right: 12),
+            // decoration: BoxDecoration(
+            //   color: Colors.green,
+            // ),
+            
+            ),
+          
+          ),
+          // child: Row(
+          //     width: 10,
+          //     height: 10,
+          //     alignment: Alignment.topLeft,
+          //     decoration: BoxDecoration(
+          //       color: Color(0xBBFFFFFF),
+          //       border: Border.all(color: Colors.grey, width: 1),
+          //     ),
+         
+          
+        );
+      },
+    );
   }
 }
 

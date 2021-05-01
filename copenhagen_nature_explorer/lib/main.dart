@@ -8,7 +8,6 @@ import 'package:copenhagen_nature_explorer/views/loginView.dart';
 import 'package:copenhagen_nature_explorer/views/profileView.dart';
 import 'package:copenhagen_nature_explorer/views/registerView.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:copenhagen_nature_explorer/views/addpostView.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

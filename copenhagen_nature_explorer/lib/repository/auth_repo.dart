@@ -50,7 +50,6 @@ class AuthRepo {
     var firebaseUser = await _auth.currentUser;
     var userName =
         await FirebaseRepo(uid: firebaseUser.uid).getUserDisplayName();
-    print(userName);
     return UserModel(uid: firebaseUser.uid, displayName: userName);
   }
 
