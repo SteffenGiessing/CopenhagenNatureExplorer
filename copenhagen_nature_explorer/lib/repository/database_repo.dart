@@ -61,31 +61,14 @@ class FirebaseRepo {
 
   Future<HashMap<String, LatLng>> getUserPost() async {
     Map<String, LatLng> listLatLng = new HashMap<String, LatLng>();
-    int incrementor = 0;
     double lat;
     double lot;
     var snapshot = await firestorePost.get().then((querySnapshot) async {
       querySnapshot.docs.forEach((element) async {
-        incrementor++;
-        String newIncroment = incrementor.toString();
-        // Map<double, double> values;
-        // values.addAll(element["latitude"].toDouble());
-        // values.addAll(element["longitude"].toDouble());
-        // print(values.toString());
-        // print(element.data());
-        // final getJsonObject = element.data();
-        // Map mapValue = jsonDecode(getJsonObject);
         lat = double.parse(element["latitude"].toString());
         lot = double.parse(element["longitude"].toString());
-        print("$lat + $lot");
-        // lat = element.data()
-        //  = json.decode(element["latitude"]);
-        //var lot = json.decode.parseDouble(element["longitude"].parseDouble());
-        // LatLng latLot = await convertLatLng(lat, lot);
         final LatLng latlot = new LatLng(lat, lot);
-
         listLatLng[element.id] = latlot;
-        print(listLatLng);
       });
     });
     return listLatLng;
@@ -107,19 +90,6 @@ class FirebaseRepo {
       displayName = querySnapshot["displayName"];
       infoText = querySnapshot["infoText"];
       downloadUrl = querySnapshot["downloadUrl"];
-      // for (var key in querySnapshot.data().keys) {
-      //   if (key == "displayName") {
-      //     String displayName = querySnapshot["displayName"];
-      //     markerInfo[key] = displayName;
-      //   } else if (key == "infoText") {
-      //     String infoText = querySnapshot["infoText"];
-      //     markerInfo[key] = infoText;
-      //   } else if (key == "downloadUrl") {
-      //     String downloadUrl = querySnapshot["downloadUrl"];
-      //     markerInfo[key] = downloadUrl;
-      //   }
-      // }
-      print(displayName + ": " + infoText + ": " + downloadUrl);
     });
     return MarkerCreator(
         displayName: displayName, infoText: infoText, pictureUrl: downloadUrl);
