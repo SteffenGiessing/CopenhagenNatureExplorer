@@ -7,17 +7,22 @@ import 'dart:async';
 import 'package:copenhagen_nature_explorer/models/metersToMarkers.dart';
 
 class DirectionHelper {
+  
+  //Map from Meters from station.
   HashMap<String, int> metersFromStation = new HashMap();
-
+  //Used to find nearest Station.
   HashMap<String, LatLng> stations = new HashMap();
   HashMap<String, LatLng> nearestFinalStation = new HashMap();
 
+  //User Location.
   Location location = new Location();
   LocationData _locationData;
 
+  //Polyline Coordinates List.
   List<LatLng> polyLinesCoordinates1 = [];
   List<LatLng> polyLinesCoordinates2 = [];
 
+  //All the avaible station.
   Future<HashMap<String, LatLng>> trainStations(
       double currentMarkerLat, double currentMarkerLot) async {
     stations["Nørreport"] = LatLng(55.68372763388621, 12.57157366748944);
@@ -43,8 +48,8 @@ class DirectionHelper {
         LatLng(55.674320218178984, 12.566418791696767);
     stations["Rådhuspladsen"] = LatLng(55.67858817600957, 12.568941827321202);
 
-    ///////////////////////////////////////////////////////
-
+    //Iterates through each station in the list and convert the distance to meters. 
+    
     stations.forEach((key, value) {
       double distance = Geolocator.distanceBetween(
           currentMarkerLat, currentMarkerLot, value.latitude, value.longitude);
@@ -52,14 +57,13 @@ class DirectionHelper {
       metersFromStation[key] = distanceInMeter;
     });
 
-    ///////////////////////////////////////////////////////
-
+    //creating a list and sorting with the lowest value first to find closest station.
     var sort = Map.fromEntries(metersFromStation.entries.toList()
       ..sort((e1, e2) => e1.value.compareTo(e2.value)));
     String closestStation = sort.entries.first.key.toString();
-    print(closestStation);
-    //////////////////////////////////////////////////////////
 
+    //Using the key from previous list to determine which station is the closest.
+    //Return a new Map with only the closest station.
     stations.forEach((key, value) {
       if (key == closestStation) {
         nearestFinalStation[key] = value;
@@ -70,6 +74,7 @@ class DirectionHelper {
     return nearestFinalStation;
   }
 
+  //Assamble markers for the map.
   Future<Set<Marker>> assambleMarkers(HashMap<String, LatLng> getNearestStation,
       double _currentMarkerLat, double _currentMarkerLot) async {
     Set<Marker> markers = new Set();
@@ -96,7 +101,7 @@ class DirectionHelper {
     });
     return markers;
   }
-
+  //Create the polyLines
   Future<List<LatLng>> createPolylines(HashMap<String, LatLng> nearestStation,
       double _currentMarkerLat, double _currentMarkerLot) async {
     List<LatLng> polyLinesCoordinates = [];

@@ -2,8 +2,6 @@ import 'package:copenhagen_nature_explorer/locator.dart';
 import 'package:copenhagen_nature_explorer/views/addpostView.dart';
 import 'package:copenhagen_nature_explorer/views/directionsView.dart';
 import 'package:flutter/material.dart';
-import './screens/feed.dart';
-import './screens/add_place.dart';
 import 'package:copenhagen_nature_explorer/views/homeView.dart';
 import 'package:copenhagen_nature_explorer/views/loginView.dart';
 import 'package:copenhagen_nature_explorer/views/profileView.dart';
@@ -24,9 +22,8 @@ class MyApp extends StatelessWidget {
       title: "Find you adventure",
       theme: ThemeData(
           primarySwatch: Colors.green, accentColor: Colors.lightGreenAccent),
-      home: PlacesListScreen(),
+      home: HomeView(),
       routes: {
-        AddPlaceScreen.routeName: (ctx) => AddPlaceScreen(),
         HomeView.route: (context) => HomeView(),
         LoginView.route: (context) => LoginView(),
         ProfileView.route: (context) => ProfileView(),

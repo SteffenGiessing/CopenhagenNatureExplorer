@@ -15,24 +15,21 @@ class DirectionsView extends StatefulWidget {
 }
 
 class _DirectionsViewState extends State<DirectionsView> {
-  
-  NearestStation _nearestStation =
-      locator.get<MarkersController>().nearestStation;
-  Set<Marker> markers = new Set();
-
-  List<LatLng> polyLinesCoordinates1 = [];
-  List<LatLng> polyLinesCoordinates2 = [];
-
+  //Text to instansiate with the distance.
   TextEditingController _distanceStationToDestination = TextEditingController();
   TextEditingController _distanceLocationToStation = TextEditingController();
-  String getAsString;
 
+  //Markers and Polylines final list.
+  final Set<Marker> markers = {};
   final Set<Polyline> _polyline = {};
+
+  //GoogleMapController.
   GoogleMapController controller;
 
+  //Getting Markers.
   var gettingMarkers;
-  var getDistance;
 
+  //Init
   @override
   void initState() {
     super.initState();
@@ -78,9 +75,13 @@ class _DirectionsViewState extends State<DirectionsView> {
                   ),
                 ),
                 ListTile(
-                  title: Text("Blueline: Distance to marker.  " + _distanceLocationToStation.text + " M"),
-                  subtitle: Text("Redline: Distance to marker.  " + _distanceStationToDestination.text + " M"),
-                ),     
+                  title: Text("Blueline: Distance to marker.  " +
+                      _distanceLocationToStation.text +
+                      " M"),
+                  subtitle: Text("Redline: Distance to marker.  " +
+                      _distanceStationToDestination.text +
+                      " M"),
+                ),
               ],
             ),
           ],
@@ -88,27 +89,35 @@ class _DirectionsViewState extends State<DirectionsView> {
       ),
     );
   }
-  //Setup Map
+
+  //Method: to setup Map.
   Future _onMapCreated(GoogleMapController controllerParam) async {
-    
+
+    //Locator Getter to recieve nearest station.
+    NearestStation _nearestStation =
+      locator.get<MarkersController>().nearestStation;
+
     //Call getClosestStation and create markers.
     gettingMarkers = await MarkersController().getClosestStation();
 
-    //Create List to feed into polyLine which contains the coordinates between the markers
+    //Create List to feed into polyLine which contains the coordinates between the markers.
     List<LatLng> latLineOne = await MarkersController()
         .userLocationToStation(_nearestStation.nearestStation);
 
-    //Create List to feed into polyLine which contains the coordinates between the markers
+    //Create List to feed into polyLine which contains the coordinates between the markers.
     List<LatLng> latLineTwo = await MarkersController()
         .stationToDestination(_nearestStation.nearestStation);
+
     //Create the values between each markers in meters.
     _setUpDistance();
 
-    //SetState for Markers and Polylines on Map
+    //SetState for Markers and Polylines on Map.
     setState(() {
+
       //Goole Map controller
       controller = controllerParam;
-      //First PolyLine -> User Location to Station
+
+      //First PolyLine -> User Location to Station.
       _polyline.add(Polyline(
         polylineId: PolylineId('Location to Station.'),
         visible: true,
@@ -117,6 +126,7 @@ class _DirectionsViewState extends State<DirectionsView> {
         color: Colors.blue,
       ));
 
+      //Second PolyLine -> User Location to Station.
       _polyline.add(Polyline(
         polylineId: PolylineId('Station to Destination.'),
         visible: true,
@@ -124,16 +134,18 @@ class _DirectionsViewState extends State<DirectionsView> {
         width: 2,
         color: Colors.red,
       ));
-
+      //Add all markers to markers list.
       markers.addAll(gettingMarkers);
     });
   }
 
+  //Method: To create setState for the distance between markers.
   Future _setUpDistance() async {
-
+    //instantiate modal class.
     MetersToMarkers _metersToMarkers =
         await MarkersController().setupMetersToMarkers();
 
+    //SetState for the distance.
     setState(() {
       _distanceLocationToStation.text =
           _metersToMarkers.metersFromLocationToStation.toString();

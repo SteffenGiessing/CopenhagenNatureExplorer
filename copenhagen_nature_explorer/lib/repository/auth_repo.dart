@@ -26,7 +26,7 @@ class AuthRepo {
   //   return user;
   // }
 
-  Future<UserModel> registerEmailAndPassword(
+  Future registerEmailAndPassword(
       {String email, String password, String displayName}) async {
     final UserCredential newUser = await _auth.createUserWithEmailAndPassword(
       email: email,

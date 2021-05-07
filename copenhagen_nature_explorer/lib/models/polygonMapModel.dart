@@ -2,6 +2,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/material.dart';
 
   Set<Polygon> polygonMap() {
+    // ignore: deprecated_member_use
     List<LatLng> polygonCordinats = new List();
     polygonCordinats.add(LatLng(55.50800858787899, 12.640172797687912));
     polygonCordinats.add(LatLng(55.52433653086542, 12.843419868000412));

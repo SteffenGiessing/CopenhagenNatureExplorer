@@ -1,7 +1,6 @@
 import 'package:copenhagen_nature_explorer/repository/auth_repo.dart';
 import 'package:copenhagen_nature_explorer/repository/storage_repo.dart';
 import 'package:copenhagen_nature_explorer/repository/database_repo.dart';
-import 'package:copenhagen_nature_explorer/models/directionHelper.dart';
 import 'package:copenhagen_nature_explorer/view_controller/markers_controller.dart';
 import 'package:copenhagen_nature_explorer/view_controller/user_controller.dart';
 import 'package:copenhagen_nature_explorer/view_controller/post_controller.dart';
