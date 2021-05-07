@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:copenhagen_nature_explorer/view_controller/markers_controller.dart';
 import 'package:copenhagen_nature_explorer/views/addpostView.dart';
+import 'package:copenhagen_nature_explorer/views/directionsView.dart';
 import 'package:copenhagen_nature_explorer/views/profileView.dart';
 import 'package:copenhagen_nature_explorer/models/markersModel.dart';
 import 'package:copenhagen_nature_explorer/locator.dart';
@@ -9,9 +10,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:copenhagen_nature_explorer/models/polygonMapModel.dart';
 
+
 class HomeView extends StatefulWidget {
   static String route = "home";
-  
+
   @override
   _HomeViewState createState() => _HomeViewState();
 }
@@ -22,13 +24,14 @@ class _HomeViewState extends State<HomeView> {
   final picker = ImagePicker();
   MarkerCreator markerCreator = MarkerCreator();
 
-  // final locData = await Location().getLocation();
   @override
   void initState() {
     super.initState();
     callMarkers();
     polygonMap();
-    //sleep(const Duration(seconds: 5));
+    setState(() {
+      
+    });
   }
 
   void callMarkers() async {
@@ -36,7 +39,6 @@ class _HomeViewState extends State<HomeView> {
         await locator.get<MarkersController>().createMarkers();
     _createMarker(fetchedMarkers);
   }
-
 
   void _createMarker(Map<String, LatLng> fetchedMarkers) {
     fetchedMarkers.forEach((key, value) {
@@ -52,7 +54,6 @@ class _HomeViewState extends State<HomeView> {
       });
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +75,6 @@ class _HomeViewState extends State<HomeView> {
             CameraPosition(target: LatLng(55.7046696, 12.5314824), zoom: 13),
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
-          Set.of(markers);
         },
         markers: Set.of(markers),
         mapToolbarEnabled: false,
@@ -82,7 +82,6 @@ class _HomeViewState extends State<HomeView> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
-          await locator.get<MarkersController>().createMarkers();
           Navigator.pushNamed(context, AddPostView.route);
         },
         icon: Icon(Icons.add),
@@ -142,7 +141,11 @@ class _HomeViewState extends State<HomeView> {
                                 style: textTheme.button,
                               ),
                               onPressed: () async {
-
+                                
+                                await Navigator.pushNamed(
+                                  context,
+                                  DirectionsView.route,
+                                );
                               }),
                         ]),
                   ),

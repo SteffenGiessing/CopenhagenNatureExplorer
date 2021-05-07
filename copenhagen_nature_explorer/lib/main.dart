@@ -1,5 +1,6 @@
 import 'package:copenhagen_nature_explorer/locator.dart';
 import 'package:copenhagen_nature_explorer/views/addpostView.dart';
+import 'package:copenhagen_nature_explorer/views/directionsView.dart';
 import 'package:flutter/material.dart';
 import './screens/feed.dart';
 import './screens/add_place.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         ProfileView.route: (context) => ProfileView(),
         RegisterView.route: (context) => RegisterView(),
         AddPostView.route: (context) => AddPostView(),
+        DirectionsView.route: (context) => DirectionsView(),
       },
       initialRoute: LoginView.route,
     );

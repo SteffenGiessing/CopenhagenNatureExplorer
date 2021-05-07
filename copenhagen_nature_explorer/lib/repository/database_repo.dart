@@ -1,22 +1,15 @@
-import 'dart:collection';
-import 'dart:convert';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:copenhagen_nature_explorer/locator.dart';
-import 'package:copenhagen_nature_explorer/models/markersModel.dart';
-import 'package:copenhagen_nature_explorer/models/place.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
-import 'package:flutter/cupertino.dart';
 import 'dart:io';
-
-import 'package:flutter/services.dart';
+import 'dart:collection';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:copenhagen_nature_explorer/models/markersModel.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:location/location.dart';
+import 'package:copenhagen_nature_explorer/views/homeView.dart';
 
 class FirebaseRepo {
   final String uid;
   FirebaseRepo({this.uid});
-
+  HomeView _homeView = new HomeView();
   firebase_storage.FirebaseStorage _storage =
       firebase_storage.FirebaseStorage.instanceFor(
           bucket: "gs://copenhagennatureexplorer.appspot.com/");
@@ -81,17 +74,24 @@ class FirebaseRepo {
   }
 
   Future<MarkerCreator> getMarkerInfo(String key) async {
-    HashMap<String, String> markerInfo = new HashMap<String, String>();
     String displayName;
     String infoText;
     String downloadUrl;
+    double lat;
+    double lot;
     var snapshot =
         await firestorePost.doc(key).get().then((querySnapshot) async {
       displayName = querySnapshot["displayName"];
       infoText = querySnapshot["infoText"];
       downloadUrl = querySnapshot["downloadUrl"];
+      lat = double.parse(querySnapshot["latitude"].toString());
+      lot = double.parse(querySnapshot["longitude"].toString());
     });
     return MarkerCreator(
-        displayName: displayName, infoText: infoText, pictureUrl: downloadUrl);
+        displayName: displayName,
+        infoText: infoText,
+        pictureUrl: downloadUrl,
+        latitude: lat,
+        longitude: lot);
   }
 }

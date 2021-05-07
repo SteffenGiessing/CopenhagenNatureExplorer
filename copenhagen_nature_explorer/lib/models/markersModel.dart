@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MarkerCreator {
   String infoText;
@@ -7,20 +7,22 @@ class MarkerCreator {
   String pictureUrl;
   String displayName;
 
-  MarkerCreator({this.infoText, this.displayName, this.pictureUrl}) {
-    print(pictureUrl);
-    print(displayName);
-    print(infoText);
-  }
-  String get getInfoText {
-    return infoText;
-  }
+  MarkerCreator(
+      {this.infoText,
+      this.displayName,
+      this.pictureUrl,
+      this.latitude,
+      this.longitude});
+}
 
-  String get getDisplayName {
-    return displayName;
-  }
+class RouteMarkers {
 
-  String get getPictureUrl {
-    return pictureUrl;
-  }
+  Set<Marker> markersList;
+  RouteMarkers({this.markersList});
+}
+
+class NearestStation {
+
+  Map<String, LatLng> nearestStation;
+  NearestStation({nearestStation});
 }
