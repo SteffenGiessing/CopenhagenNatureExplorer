@@ -9,7 +9,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:copenhagen_nature_explorer/models/polygonMapModel.dart';
-
+import 'package:cloud_functions/cloud_functions.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class HomeView extends StatefulWidget {
   static String route = "home";
@@ -29,9 +30,7 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     callMarkers();
     polygonMap();
-    setState(() {
-      
-    });
+    setState(() {});
   }
 
   void callMarkers() async {
@@ -65,6 +64,7 @@ class _HomeViewState extends State<HomeView> {
           IconButton(
               icon: Icon(Icons.account_box_sharp),
               onPressed: () {
+                tryout();
                 Navigator.pushNamed(context, ProfileView.route);
               }),
         ],
@@ -89,6 +89,32 @@ class _HomeViewState extends State<HomeView> {
         label: const Text("Add New Post"),
       ),
     );
+  }
+
+  tryout() async {
+    print("Hititng?");
+    HttpsCallable callAble = FirebaseFunctions.instance.httpsCallable("text",
+        options: HttpsCallableOptions(timeout: Duration(seconds: 5)));
+    try {
+      final HttpsCallableResult result = await callAble.call(
+        <String, String>{
+          "message": "hej",
+        },
+      );
+      print(result.data["response"]);
+    } catch (e) {
+      print(e);
+    }
+    HttpsCallable callGetNearest = FirebaseFunctions.instance.httpsCallable(
+        "getNearestStation",
+        options: HttpsCallableOptions(timeout: Duration(seconds: 5)));
+    try {
+      final HttpsCallableResult result =
+          await callGetNearest.call(<String, LatLng>{});
+    } catch (e) {
+      print(e);
+    }
+    // print(result.data["reponse"]);
   }
 
   void showAddPost(MarkerCreator markerCreator) {
@@ -141,7 +167,6 @@ class _HomeViewState extends State<HomeView> {
                                 style: textTheme.button,
                               ),
                               onPressed: () async {
-                                
                                 await Navigator.pushNamed(
                                   context,
                                   DirectionsView.route,

@@ -6,6 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:copenhagen_nature_explorer/models/markersModel.dart';
 import 'package:copenhagen_nature_explorer/view_controller/markers_controller.dart';
 import 'package:copenhagen_nature_explorer/locator.dart';
+import 'package:google_directions_api/google_directions_api.dart';
 
 class DirectionsView extends StatefulWidget {
   static String route = "directions";
@@ -41,7 +42,7 @@ class _DirectionsViewState extends State<DirectionsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Explorer"),
+        title: Text("Directions"),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
@@ -57,7 +58,7 @@ class _DirectionsViewState extends State<DirectionsView> {
               width: double.infinity,
               child: GoogleMap(
                 initialCameraPosition: CameraPosition(
-                    target: LatLng(55.7046696, 12.5314824), zoom: 13),
+                  target: LatLng(55.7046696, 12.5314824), zoom: 13),
                 onMapCreated: _onMapCreated,
                 markers: Set.of(markers),
                 mapToolbarEnabled: false,
@@ -92,10 +93,12 @@ class _DirectionsViewState extends State<DirectionsView> {
 
   //Method: to setup Map.
   Future _onMapCreated(GoogleMapController controllerParam) async {
-
+    DirectionsService.init("AIzaSyBC-3s8CcMfSKWMoU96Bkb3c3gQ34QVdHM");
+    var directionService = DirectionsService();
+    // var directionReder = new DirectionsResult.fromMap(controllerParam);
     //Locator Getter to recieve nearest station.
     NearestStation _nearestStation =
-      locator.get<MarkersController>().nearestStation;
+        locator.get<MarkersController>().nearestStation;
 
     //Call getClosestStation and create markers.
     gettingMarkers = await MarkersController().getClosestStation();
@@ -113,7 +116,6 @@ class _DirectionsViewState extends State<DirectionsView> {
 
     //SetState for Markers and Polylines on Map.
     setState(() {
-
       //Goole Map controller
       controller = controllerParam;
 
@@ -134,11 +136,27 @@ class _DirectionsViewState extends State<DirectionsView> {
         width: 2,
         color: Colors.red,
       ));
+
+      final request = DirectionsRequest(
+          origin: 'Copenhagen',
+          destination: 'Stockholm',
+          travelMode: TravelMode.bicycling);
+      directionService.route(request,
+          (DirectionsResult response, DirectionsStatus status) {
+        if (status == DirectionsStatus.ok) {
+         // response.routes
+          print("Success");
+        } else {
+          print("We have an error with direction");
+        }
+      });
       //Add all markers to markers list.
       markers.addAll(gettingMarkers);
     });
   }
 
+//LatLng(55.704798171435954, 12.531552659435617)
+//LatLng(55.71853087264182, 12.533084640916831)
   //Method: To create setState for the distance between markers.
   Future _setUpDistance() async {
     //instantiate modal class.
