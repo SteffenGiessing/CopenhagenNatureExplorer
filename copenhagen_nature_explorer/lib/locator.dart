@@ -4,8 +4,10 @@ import 'package:copenhagen_nature_explorer/repository/database_repo.dart';
 import 'package:copenhagen_nature_explorer/view_controller/markers_controller.dart';
 import 'package:copenhagen_nature_explorer/view_controller/user_controller.dart';
 import 'package:copenhagen_nature_explorer/view_controller/post_controller.dart';
-
+import 'package:copenhagen_nature_explorer/repository/directionsRepository.dart';
 import 'package:get_it/get_it.dart';
+
+
 
 final locator = GetIt.instance;
 
@@ -13,6 +15,7 @@ void setupServices() {
   locator.registerSingleton<AuthRepo>(AuthRepo());
   locator.registerSingleton<StorageRepo>(StorageRepo());
   locator.registerSingleton<FirebaseRepo>(FirebaseRepo());
+  locator.registerSingleton<DirectionsRepository>(DirectionsRepository());
   locator.registerSingleton<UserController>(UserController());
   locator.registerSingleton<PostController>(PostController());
   locator.registerSingleton<MarkersController>(MarkersController());

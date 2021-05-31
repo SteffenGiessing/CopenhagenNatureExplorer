@@ -1,0 +1,947 @@
+{
+    "geocoded_waypoints": [
+      {
+        "geocoder_status": "OK",
+        "place_id": "ChIJIdQ5IzZSUkYR044CMJ-ULv8",
+        "types": [
+          "street_address"
+        ]
+      },
+      {
+        "geocoder_status": "OK",
+        "place_id": "ChIJh_ETJPlOUkYRPH5oR34b0vk",
+        "types": [
+          "premise"
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "bounds": {
+          "northeast": {
+            "lat": 55.79593440000001,
+            "lng": 12.5592119
+          },
+          "southwest": {
+            "lat": 55.7007208,
+            "lng": 12.4838709
+          }
+        },
+        "copyrights": "Map data ©2021",
+        "legs": [
+          {
+            "arrival_time": {
+              "text": "12:28pm",
+              "time_zone": "Europe/Copenhagen",
+              "value": 1622370510
+            },
+            "departure_time": {
+              "text": "11:33am",
+              "time_zone": "Europe/Copenhagen",
+              "value": 1622367189
+            },
+            "distance": {
+              "text": "13.6 km",
+              "value": 13567
+            },
+            "duration": {
+              "text": "55 mins",
+              "value": 3321
+            },
+            "end_address": "Holmekrogen 71, 2830 Virum, Denmark",
+            "end_location": {
+              "lat": 55.79593440000001,
+              "lng": 12.4846088
+            },
+            "start_address": "Glasvej 28, 2400 København, Denmark",
+            "start_location": {
+              "lat": 55.7047519,
+              "lng": 12.5313589
+            },
+            "steps": [
+              {
+                "distance": {
+                  "text": "0.8 km",
+                  "value": 802
+                },
+                "duration": {
+                  "text": "10 mins",
+                  "value": 590
+                },
+                "end_location": {
+                  "lat": 55.70096239999999,
+                  "lng": 12.5380495
+                },
+                "html_instructions": "Walk to Nørrebro St.",
+                "polyline": {
+                  "points": "uy~rI_pnkAnBpBb@r@r@lAl@fA\\h@b@yALe@FUDQHS`@wAXaAFSfAqDVu@Nk@ZeALk@DYZwCRcBJaA\\kDDa@JgAHw@JcBBYNBLmAD[@OFU"
+                },
+                "start_location": {
+                  "lat": 55.7047519,
+                  "lng": 12.5313589
+                },
+                "steps": [
+                  {
+                    "distance": {
+                      "text": "0.2 km",
+                      "value": 195
+                    },
+                    "duration": {
+                      "text": "2 mins",
+                      "value": 144
+                    },
+                    "end_location": {
+                      "lat": 55.7033734,
+                      "lng": 12.5295666
+                    },
+                    "html_instructions": "Head <b>southwest</b> on <b>Glasvej</b> toward <b>Thoravej</b>",
+                    "polyline": {
+                      "points": "uy~rI_pnkAnBpBb@r@r@lAl@fA\\h@"
+                    },
+                    "start_location": {
+                      "lat": 55.7047519,
+                      "lng": 12.5313589
+                    },
+                    "travel_mode": "WALKING"
+                  },
+                  {
+                    "distance": {
+                      "text": "0.6 km",
+                      "value": 607
+                    },
+                    "duration": {
+                      "text": "7 mins",
+                      "value": 446
+                    },
+                    "end_location": {
+                      "lat": 55.70096239999999,
+                      "lng": 12.5380495
+                    },
+                    "html_instructions": "Turn <b>left</b> onto <b>Frederikssundsvej</b><div style=\"font-size:0.9em\">Destination will be on the right</div>",
+                    "maneuver": "turn-left",
+                    "polyline": {
+                      "points": "aq~rIydnkAb@yALe@FUDQHS`@wAXaAFSfAqDVu@Nk@ZeALk@DYZwCRcBJaA\\kDDa@JgAHw@JcBBYNBLmAD[@OFU"
+                    },
+                    "start_location": {
+                      "lat": 55.7033734,
+                      "lng": 12.5295666
+                    },
+                    "travel_mode": "WALKING"
+                  }
+                ],
+                "travel_mode": "WALKING"
+              },
+              {
+                "distance": {
+                  "text": "2.2 km",
+                  "value": 2173
+                },
+                "duration": {
+                  "text": "4 mins",
+                  "value": 240
+                },
+                "end_location": {
+                  "lat": 55.7151809,
+                  "lng": 12.5592119
+                },
+                "html_instructions": "Commuter train towards Hellerup St.",
+                "polyline": {
+                  "points": "o`~rIkxokA?GYEMCeAOQEgAYaA[_@KECUG{@]m@Uc@Qk@Uc@Qc@SUMk@_@SOYQOMUQEE_@[AAUWkAiAQQs@s@QS]]YYEG{@_A]e@CCW_@]k@OUa@i@]k@S]Ye@Uc@_@q@MWKUUg@Ui@Oa@Se@So@O]Oc@_@oASo@Uw@Mg@Kc@YgAg@qBMk@YeAUeA]sA[sAQo@Mg@S}@WeA_@wAGWIa@[oAQs@]uASu@Oe@Oa@Mc@O_@KYEOIQWk@Ui@Yk@[o@Sa@e@u@Ua@U]Q]Q[IKiAqBQ[U][i@KSKUKQS]MUUa@Wa@MUCG[m@w@sA_@q@IMQ]q@eAMUS[g@w@DK"
+                },
+                "start_location": {
+                  "lat": 55.7007236,
+                  "lng": 12.5378194
+                },
+                "transit_details": {
+                  "arrival_stop": {
+                    "location": {
+                      "lat": 55.7151809,
+                      "lng": 12.5592119
+                    },
+                    "name": "Ryparken St."
+                  },
+                  "arrival_time": {
+                    "text": "11:47am",
+                    "time_zone": "Europe/Copenhagen",
+                    "value": 1622368020
+                  },
+                  "departure_stop": {
+                    "location": {
+                      "lat": 55.7007236,
+                      "lng": 12.5378194
+                    },
+                    "name": "Nørrebro St."
+                  },
+                  "departure_time": {
+                    "text": "11:43am",
+                    "time_zone": "Europe/Copenhagen",
+                    "value": 1622367780
+                  },
+                  "headsign": "Hellerup St.",
+                  "line": {
+                    "agencies": [
+                      {
+                        "name": "DSB S-tog",
+                        "url": "http://www.dsb.dk/"
+                      }
+                    ],
+                    "color": "#f2bc02",
+                    "short_name": "F",
+                    "vehicle": {
+                      "icon": "//maps.gstatic.com/mapfiles/transit/iw2/6/rail2.png",
+                      "name": "Commuter train",
+                      "type": "COMMUTER_TRAIN"
+                    }
+                  },
+                  "num_stops": 2,
+                  "trip_short_name": "670134"
+                },
+                "travel_mode": "TRANSIT"
+              },
+              {
+                "distance": {
+                  "text": "30 m",
+                  "value": 30
+                },
+                "duration": {
+                  "text": "1 min",
+                  "value": 22
+                },
+                "end_location": {
+                  "lat": 55.7154172,
+                  "lng": 12.5589209
+                },
+                "html_instructions": "Walk to Ryparken St. (Lyngbyvej)",
+                "polyline": {
+                  "points": "wz`sIa}skAs@X"
+                },
+                "start_location": {
+                  "lat": 55.71515549999999,
+                  "lng": 12.5590519
+                },
+                "steps": [
+                  {
+                    "distance": {
+                      "text": "30 m",
+                      "value": 30
+                    },
+                    "duration": {
+                      "text": "1 min",
+                      "value": 22
+                    },
+                    "end_location": {
+                      "lat": 55.7154172,
+                      "lng": 12.5589209
+                    },
+                    "html_instructions": "Head <b>north</b> on <b>Lyngbyvej</b>",
+                    "polyline": {
+                      "points": "wz`sIa}skAs@X"
+                    },
+                    "start_location": {
+                      "lat": 55.71515549999999,
+                      "lng": 12.5590519
+                    },
+                    "travel_mode": "WALKING"
+                  }
+                ],
+                "travel_mode": "WALKING"
+              },
+              {
+                "distance": {
+                  "text": "10.2 km",
+                  "value": 10171
+                },
+                "duration": {
+                  "text": "21 mins",
+                  "value": 1260
+                },
+                "end_location": {
+                  "lat": 55.7932766,
+                  "lng": 12.4844887
+                },
+                "html_instructions": "Bus towards Holte St.",
+                "polyline": {
+                  "points": "i|`sI{{skAQFMHIBMDI@y@LM@[@W@QBMBQFIDMHMHSNEFKHIJMLQPKFEBQHGDMHE@sAh@{@\\w@XEDQNGFEBE@GBq@VeAb@uAh@}@TuBh@yBz@q@VKNkAb@wAj@m@To@TMN_@LsAj@q@Vk@ZC@u@`@g@ZGDe@\\MHYVq@n@ONIJSPIFKLOROP]`@kDvDg@j@sAxAUVEFGFsC|Ci@j@iBvB]^s@v@m@r@a@^uBzBYZiAnA{@|@KLUXWVGFUX]b@]`@MPoAvAQRw@~@eAjA}@dAc@f@g@j@_@^GHyEbF}AdBeApAQRMJaAhAa@f@eCnCGFg@f@mAlAQNs@z@EFuB~BsB|Bk@j@_AbAiAtAcAfAaAbAa@j@gBfB_@^QN{A|AyAxAEDGFc@d@iAjA}A~A}BdC{@|@mAjAcBfBq@t@CDm@l@GJGFGHiBtB_CpCoBhCORiAhBY`@W\\m@z@QVCDi@t@iBbCeBxBA@mB|BcAjAk@h@kBtByBdCc@f@CB[\\IHEDYXGDgA`AOLm@b@UFQF[BS@c@Ba@H_@NULSREDSVUZINEH?BIXEJYz@a@jAYp@W^]b@ILoBzBKL?@GDSVQPOP{@`AUTA@A@SRi@j@oCxCaAt@WRQL?@m@b@i@^GDMPi@b@e@d@KNINGJ?@MVCHCFOn@ABEXCJAJg@bEMr@Or@Uv@Ob@e@r@WPECE?C@E@EDADA@OTMJMFOFYHKBE?EBIDS?QAQA[@YDSFULODa@^MCKJi@j@_AfA{BlCg@l@QRcAfA{BbCWXIFURYZ]\\GFKDIFKDIBIBID_@JMBWIADKb@I`@K^Sj@QVS^ILKJMNS^mBdC_@j@r@dCL\\wAdFCDGZAHAFQtAKx@G^Ov@Ov@I\\Qr@Gh@a@`BSl@ITIPMV]p@Sb@S\\SZIN_@h@GFSJSFO@GAKC}@YiAYYGoA_@w@YIESKa@S?G?GACAEACCCAAC?A@A?CBABA?AB?B?DAB?DIDKFKNILQRGJGHCFKVEHCFc@p@c@l@u@~@g@j@g@f@cAhA[^iAjAeDlDoApAKL_B`B[ZmCrCwBzBkAfAk@b@yA~@CBmGpD{CfB{@TIBiAl@kAj@[NkCbBIFgAl@uBpAGDuBfAaAj@k@^s@b@_@TMFiBdAeAf@o@b@WN_@ZA@c@b@Q\\QZUj@GAWBcA`@IBeBp@YHg@R_@N[JC@KDC@WLGDGJk@T]LC@kB|@cAf@]Tc@VWN{ClB_An@iAn@[PAA"
+                },
+                "start_location": {
+                  "lat": 55.7154073,
+                  "lng": 12.5588585
+                },
+                "transit_details": {
+                  "arrival_stop": {
+                    "location": {
+                      "lat": 55.7932766,
+                      "lng": 12.4844887
+                    },
+                    "name": "Ahornvej (Kongevejen)"
+                  },
+                  "arrival_time": {
+                    "text": "12:23pm",
+                    "time_zone": "Europe/Copenhagen",
+                    "value": 1622370238
+                  },
+                  "departure_stop": {
+                    "location": {
+                      "lat": 55.7154073,
+                      "lng": 12.5588585
+                    },
+                    "name": "Ryparken St. (Lyngbyvej)"
+                  },
+                  "departure_time": {
+                    "text": "11:59am",
+                    "time_zone": "Europe/Copenhagen",
+                    "value": 1622368740
+                  },
+                  "headsign": "Holte St.",
+                  "line": {
+                    "agencies": [
+                      {
+                        "name": "Movia",
+                        "url": "http://www.moviatrafik.dk/"
+                      }
+                    ],
+                    "short_name": "184",
+                    "vehicle": {
+                      "icon": "//maps.gstatic.com/mapfiles/transit/iw2/6/bus2.png",
+                      "name": "Bus",
+                      "type": "BUS"
+                    }
+                  },
+                  "num_stops": 20,
+                  "trip_short_name": "18400045"
+                },
+                "travel_mode": "TRANSIT"
+              },
+              {
+                "distance": {
+                  "text": "0.4 km",
+                  "value": 391
+                },
+                "duration": {
+                  "text": "5 mins",
+                  "value": 271
+                },
+                "end_location": {
+                  "lat": 55.79593440000001,
+                  "lng": 12.4846088
+                },
+                "html_instructions": "Walk to Holmekrogen 71, 2830 Virum, Denmark",
+                "polyline": {
+                  "points": "}bpsI_kekA}@f@aAd@y@d@K{@[cCgFvCMLg@^I}@IuA"
+                },
+                "start_location": {
+                  "lat": 55.7932749,
+                  "lng": 12.4844799
+                },
+                "steps": [
+                  {
+                    "distance": {
+                      "text": "0.1 km",
+                      "value": 109
+                    },
+                    "duration": {
+                      "text": "1 min",
+                      "value": 74
+                    },
+                    "end_location": {
+                      "lat": 55.7941965,
+                      "lng": 12.4838972
+                    },
+                    "html_instructions": "Head <b>north</b> on <b>Kongevejen</b>/<wbr/><b>Route 201</b> toward <b>Lindevangen</b>",
+                    "polyline": {
+                      "points": "}bpsI_kekA}@f@aAd@y@d@"
+                    },
+                    "start_location": {
+                      "lat": 55.7932749,
+                      "lng": 12.4844799
+                    },
+                    "travel_mode": "WALKING"
+                  },
+                  {
+                    "distance": {
+                      "text": "64 m",
+                      "value": 64
+                    },
+                    "duration": {
+                      "text": "1 min",
+                      "value": 50
+                    },
+                    "end_location": {
+                      "lat": 55.7944009,
+                      "lng": 12.4848554
+                    },
+                    "html_instructions": "Turn <b>right</b> onto <b>Lindevangen</b>",
+                    "maneuver": "turn-right",
+                    "polyline": {
+                      "points": "whpsIkgekAK{@[cC"
+                    },
+                    "start_location": {
+                      "lat": 55.7941965,
+                      "lng": 12.4838972
+                    },
+                    "travel_mode": "WALKING"
+                  },
+                  {
+                    "distance": {
+                      "text": "0.1 km",
+                      "value": 146
+                    },
+                    "duration": {
+                      "text": "2 mins",
+                      "value": 98
+                    },
+                    "end_location": {
+                      "lat": 55.7956319,
+                      "lng": 12.4840311
+                    },
+                    "html_instructions": "Turn <b>left</b> onto <b>Birkevang</b>",
+                    "maneuver": "turn-left",
+                    "polyline": {
+                      "points": "_jpsIkmekAgFvCML"
+                    },
+                    "start_location": {
+                      "lat": 55.7944009,
+                      "lng": 12.4848554
+                    },
+                    "travel_mode": "WALKING"
+                  },
+                  {
+                    "distance": {
+                      "text": "24 m",
+                      "value": 24
+                    },
+                    "duration": {
+                      "text": "1 min",
+                      "value": 16
+                    },
+                    "end_location": {
+                      "lat": 55.7958304,
+                      "lng": 12.4838709
+                    },
+                    "html_instructions": "Continue onto <b>Holmekrogen</b>",
+                    "polyline": {
+                      "points": "uqpsIehekAg@^"
+                    },
+                    "start_location": {
+                      "lat": 55.7956319,
+                      "lng": 12.4840311
+                    },
+                    "travel_mode": "WALKING"
+                  },
+                  {
+                    "distance": {
+                      "text": "48 m",
+                      "value": 48
+                    },
+                    "duration": {
+                      "text": "1 min",
+                      "value": 33
+                    },
+                    "end_location": {
+                      "lat": 55.79593440000001,
+                      "lng": 12.4846088
+                    },
+                    "html_instructions": "Turn <b>right</b> to stay on <b>Holmekrogen</b><div style=\"font-size:0.9em\">Destination will be on the right</div>",
+                    "maneuver": "turn-right",
+                    "polyline": {
+                      "points": "}rpsIegekAI}@IuA"
+                    },
+                    "start_location": {
+                      "lat": 55.7958304,
+                      "lng": 12.4838709
+                    },
+                    "travel_mode": "WALKING"
+                  }
+                ],
+                "travel_mode": "WALKING"
+              }
+            ],
+            "traffic_speed_entry": [],
+            "via_waypoint": []
+          }
+        ],
+        "overview_polyline": {
+          "points": "uy~rI_pnkAnBpBb@r@`BtC\\h@b@yAT{@jA_EvBgHh@qB`@qDbAsJd@}FNBLmAFk@FUn@l@?GYEsASyA_@}Bs@yD{AgAe@aAm@sAaAaF_FyB_Ca@i@u@kAq@_Aq@iA}AsCa@}@e@kAgAwCwA_F{AiGuDoOmAaFsAeFy@_COa@m@uAu@{Ay@wAoAyB{BwD_AeBuDwGmBcDa@q@g@w@DKB^s@X@Ji@TWFgANs@B_@Fw@`@o@l@_@^QJm@ZmEfBYVKDuEhBsD~@kDrAKNkAb@eC`Ao@TMNsBx@}Ar@y@b@cBhAeBbB]X[`@aGvGwB`C}DhEgCvCaBjBwCzCkDvDkArAgJtKsB|BwHhIwAdBoAtAgDvDoClCcH`IkBnBmC|CaAbAa@j@gCfCmElEsExEyDbEqDrDkBtByFxG_C|CcBjC{AvBsCxDgBzBqDhEwC~C}DnEq@n@wAnAm@b@UFm@Jw@Da@H_@Ni@`@Y\\_@j@Ur@{@fCYp@W^g@p@{BhCm@p@cBjBoEzEkBxAwAbAUVi@b@e@d@U^Yn@[tAEVu@vFe@jBOb@e@r@WPECI@KFCF]`@]Nq@PIDS?c@Cu@Fi@TODa@^MCKJiBrBcDzDiFxFwAtAi@Z}@XMBWIMh@U`ASj@QV]l@YZS^mBdC_@j@r@dCL\\wAdFK`@a@`DWvAYtAQr@Gh@u@nC_ApBeAlBg@p@g@RW?iA]cBa@gCy@]Qa@S?GAKCIKCIFCP?DIDWVk@v@Yp@gA~A}AjBqE|EaJnJiDnDcEbEeCbBqGtD{CfB{@TsAp@gBz@uCjB}D~B}BlAaEdCwBlAeAf@o@b@w@j@e@d@c@x@Uj@GAWBcA`@oBt@}Bx@k@VOPiAb@oB~@cAf@]T{@f@{E|CeB`A_ClAy@d@K{@[cCgFvCu@l@SsC"
+        },
+        "summary": "",
+        "warnings": [
+          "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+        ],
+        "waypoint_order": []
+      }
+    ],
+    "status": "OK"
+  }{
+    "geocoded_waypoints": [
+      {
+        "geocoder_status": "OK",
+        "place_id": "ChIJIdQ5IzZSUkYR044CMJ-ULv8",
+        "types": [
+          "street_address"
+        ]
+      },
+      {
+        "geocoder_status": "OK",
+        "place_id": "ChIJh_ETJPlOUkYRPH5oR34b0vk",
+        "types": [
+          "premise"
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "bounds": {
+          "northeast": {
+            "lat": 55.79593440000001,
+            "lng": 12.5592119
+          },
+          "southwest": {
+            "lat": 55.7007208,
+            "lng": 12.4838709
+          }
+        },
+        "copyrights": "Map data ©2021",
+        "legs": [
+          {
+            "arrival_time": {
+              "text": "12:28pm",
+              "time_zone": "Europe/Copenhagen",
+              "value": 1622370510
+            },
+            "departure_time": {
+              "text": "11:33am",
+              "time_zone": "Europe/Copenhagen",
+              "value": 1622367189
+            },
+            "distance": {
+              "text": "13.6 km",
+              "value": 13567
+            },
+            "duration": {
+              "text": "55 mins",
+              "value": 3321
+            },
+            "end_address": "Holmekrogen 71, 2830 Virum, Denmark",
+            "end_location": {
+              "lat": 55.79593440000001,
+              "lng": 12.4846088
+            },
+            "start_address": "Glasvej 28, 2400 København, Denmark",
+            "start_location": {
+              "lat": 55.7047519,
+              "lng": 12.5313589
+            },
+            "steps": [
+              {
+                "distance": {
+                  "text": "0.8 km",
+                  "value": 802
+                },
+                "duration": {
+                  "text": "10 mins",
+                  "value": 590
+                },
+                "end_location": {
+                  "lat": 55.70096239999999,
+                  "lng": 12.5380495
+                },
+                "html_instructions": "Walk to Nørrebro St.",
+                "polyline": {
+                  "points": "uy~rI_pnkAnBpBb@r@r@lAl@fA\\h@b@yALe@FUDQHS`@wAXaAFSfAqDVu@Nk@ZeALk@DYZwCRcBJaA\\kDDa@JgAHw@JcBBYNBLmAD[@OFU"
+                },
+                "start_location": {
+                  "lat": 55.7047519,
+                  "lng": 12.5313589
+                },
+                "steps": [
+                  {
+                    "distance": {
+                      "text": "0.2 km",
+                      "value": 195
+                    },
+                    "duration": {
+                      "text": "2 mins",
+                      "value": 144
+                    },
+                    "end_location": {
+                      "lat": 55.7033734,
+                      "lng": 12.5295666
+                    },
+                    "html_instructions": "Head <b>southwest</b> on <b>Glasvej</b> toward <b>Thoravej</b>",
+                    "polyline": {
+                      "points": "uy~rI_pnkAnBpBb@r@r@lAl@fA\\h@"
+                    },
+                    "start_location": {
+                      "lat": 55.7047519,
+                      "lng": 12.5313589
+                    },
+                    "travel_mode": "WALKING"
+                  },
+                  {
+                    "distance": {
+                      "text": "0.6 km",
+                      "value": 607
+                    },
+                    "duration": {
+                      "text": "7 mins",
+                      "value": 446
+                    },
+                    "end_location": {
+                      "lat": 55.70096239999999,
+                      "lng": 12.5380495
+                    },
+                    "html_instructions": "Turn <b>left</b> onto <b>Frederikssundsvej</b><div style=\"font-size:0.9em\">Destination will be on the right</div>",
+                    "maneuver": "turn-left",
+                    "polyline": {
+                      "points": "aq~rIydnkAb@yALe@FUDQHS`@wAXaAFSfAqDVu@Nk@ZeALk@DYZwCRcBJaA\\kDDa@JgAHw@JcBBYNBLmAD[@OFU"
+                    },
+                    "start_location": {
+                      "lat": 55.7033734,
+                      "lng": 12.5295666
+                    },
+                    "travel_mode": "WALKING"
+                  }
+                ],
+                "travel_mode": "WALKING"
+              },
+              {
+                "distance": {
+                  "text": "2.2 km",
+                  "value": 2173
+                },
+                "duration": {
+                  "text": "4 mins",
+                  "value": 240
+                },
+                "end_location": {
+                  "lat": 55.7151809,
+                  "lng": 12.5592119
+                },
+                "html_instructions": "Commuter train towards Hellerup St.",
+                "polyline": {
+                  "points": "o`~rIkxokA?GYEMCeAOQEgAYaA[_@KECUG{@]m@Uc@Qk@Uc@Qc@SUMk@_@SOYQOMUQEE_@[AAUWkAiAQQs@s@QS]]YYEG{@_A]e@CCW_@]k@OUa@i@]k@S]Ye@Uc@_@q@MWKUUg@Ui@Oa@Se@So@O]Oc@_@oASo@Uw@Mg@Kc@YgAg@qBMk@YeAUeA]sA[sAQo@Mg@S}@WeA_@wAGWIa@[oAQs@]uASu@Oe@Oa@Mc@O_@KYEOIQWk@Ui@Yk@[o@Sa@e@u@Ua@U]Q]Q[IKiAqBQ[U][i@KSKUKQS]MUUa@Wa@MUCG[m@w@sA_@q@IMQ]q@eAMUS[g@w@DK"
+                },
+                "start_location": {
+                  "lat": 55.7007236,
+                  "lng": 12.5378194
+                },
+                "transit_details": {
+                  "arrival_stop": {
+                    "location": {
+                      "lat": 55.7151809,
+                      "lng": 12.5592119
+                    },
+                    "name": "Ryparken St."
+                  },
+                  "arrival_time": {
+                    "text": "11:47am",
+                    "time_zone": "Europe/Copenhagen",
+                    "value": 1622368020
+                  },
+                  "departure_stop": {
+                    "location": {
+                      "lat": 55.7007236,
+                      "lng": 12.5378194
+                    },
+                    "name": "Nørrebro St."
+                  },
+                  "departure_time": {
+                    "text": "11:43am",
+                    "time_zone": "Europe/Copenhagen",
+                    "value": 1622367780
+                  },
+                  "headsign": "Hellerup St.",
+                  "line": {
+                    "agencies": [
+                      {
+                        "name": "DSB S-tog",
+                        "url": "http://www.dsb.dk/"
+                      }
+                    ],
+                    "color": "#f2bc02",
+                    "short_name": "F",
+                    "vehicle": {
+                      "icon": "//maps.gstatic.com/mapfiles/transit/iw2/6/rail2.png",
+                      "name": "Commuter train",
+                      "type": "COMMUTER_TRAIN"
+                    }
+                  },
+                  "num_stops": 2,
+                  "trip_short_name": "670134"
+                },
+                "travel_mode": "TRANSIT"
+              },
+              {
+                "distance": {
+                  "text": "30 m",
+                  "value": 30
+                },
+                "duration": {
+                  "text": "1 min",
+                  "value": 22
+                },
+                "end_location": {
+                  "lat": 55.7154172,
+                  "lng": 12.5589209
+                },
+                "html_instructions": "Walk to Ryparken St. (Lyngbyvej)",
+                "polyline": {
+                  "points": "wz`sIa}skAs@X"
+                },
+                "start_location": {
+                  "lat": 55.71515549999999,
+                  "lng": 12.5590519
+                },
+                "steps": [
+                  {
+                    "distance": {
+                      "text": "30 m",
+                      "value": 30
+                    },
+                    "duration": {
+                      "text": "1 min",
+                      "value": 22
+                    },
+                    "end_location": {
+                      "lat": 55.7154172,
+                      "lng": 12.5589209
+                    },
+                    "html_instructions": "Head <b>north</b> on <b>Lyngbyvej</b>",
+                    "polyline": {
+                      "points": "wz`sIa}skAs@X"
+                    },
+                    "start_location": {
+                      "lat": 55.71515549999999,
+                      "lng": 12.5590519
+                    },
+                    "travel_mode": "WALKING"
+                  }
+                ],
+                "travel_mode": "WALKING"
+              },
+              {
+                "distance": {
+                  "text": "10.2 km",
+                  "value": 10171
+                },
+                "duration": {
+                  "text": "21 mins",
+                  "value": 1260
+                },
+                "end_location": {
+                  "lat": 55.7932766,
+                  "lng": 12.4844887
+                },
+                "html_instructions": "Bus towards Holte St.",
+                "polyline": {
+                  "points": "i|`sI{{skAQFMHIBMDI@y@LM@[@W@QBMBQFIDMHMHSNEFKHIJMLQPKFEBQHGDMHE@sAh@{@\\w@XEDQNGFEBE@GBq@VeAb@uAh@}@TuBh@yBz@q@VKNkAb@wAj@m@To@TMN_@LsAj@q@Vk@ZC@u@`@g@ZGDe@\\MHYVq@n@ONIJSPIFKLOROP]`@kDvDg@j@sAxAUVEFGFsC|Ci@j@iBvB]^s@v@m@r@a@^uBzBYZiAnA{@|@KLUXWVGFUX]b@]`@MPoAvAQRw@~@eAjA}@dAc@f@g@j@_@^GHyEbF}AdBeApAQRMJaAhAa@f@eCnCGFg@f@mAlAQNs@z@EFuB~BsB|Bk@j@_AbAiAtAcAfAaAbAa@j@gBfB_@^QN{A|AyAxAEDGFc@d@iAjA}A~A}BdC{@|@mAjAcBfBq@t@CDm@l@GJGFGHiBtB_CpCoBhCORiAhBY`@W\\m@z@QVCDi@t@iBbCeBxBA@mB|BcAjAk@h@kBtByBdCc@f@CB[\\IHEDYXGDgA`AOLm@b@UFQF[BS@c@Ba@H_@NULSREDSVUZINEH?BIXEJYz@a@jAYp@W^]b@ILoBzBKL?@GDSVQPOP{@`AUTA@A@SRi@j@oCxCaAt@WRQL?@m@b@i@^GDMPi@b@e@d@KNINGJ?@MVCHCFOn@ABEXCJAJg@bEMr@Or@Uv@Ob@e@r@WPECE?C@E@EDADA@OTMJMFOFYHKBE?EBIDS?QAQA[@YDSFULODa@^MCKJi@j@_AfA{BlCg@l@QRcAfA{BbCWXIFURYZ]\\GFKDIFKDIBIBID_@JMBWIADKb@I`@K^Sj@QVS^ILKJMNS^mBdC_@j@r@dCL\\wAdFCDGZAHAFQtAKx@G^Ov@Ov@I\\Qr@Gh@a@`BSl@ITIPMV]p@Sb@S\\SZIN_@h@GFSJSFO@GAKC}@YiAYYGoA_@w@YIESKa@S?G?GACAEACCCAAC?A@A?CBABA?AB?B?DAB?DIDKFKNILQRGJGHCFKVEHCFc@p@c@l@u@~@g@j@g@f@cAhA[^iAjAeDlDoApAKL_B`B[ZmCrCwBzBkAfAk@b@yA~@CBmGpD{CfB{@TIBiAl@kAj@[NkCbBIFgAl@uBpAGDuBfAaAj@k@^s@b@_@TMFiBdAeAf@o@b@WN_@ZA@c@b@Q\\QZUj@GAWBcA`@IBeBp@YHg@R_@N[JC@KDC@WLGDGJk@T]LC@kB|@cAf@]Tc@VWN{ClB_An@iAn@[PAA"
+                },
+                "start_location": {
+                  "lat": 55.7154073,
+                  "lng": 12.5588585
+                },
+                "transit_details": {
+                  "arrival_stop": {
+                    "location": {
+                      "lat": 55.7932766,
+                      "lng": 12.4844887
+                    },
+                    "name": "Ahornvej (Kongevejen)"
+                  },
+                  "arrival_time": {
+                    "text": "12:23pm",
+                    "time_zone": "Europe/Copenhagen",
+                    "value": 1622370238
+                  },
+                  "departure_stop": {
+                    "location": {
+                      "lat": 55.7154073,
+                      "lng": 12.5588585
+                    },
+                    "name": "Ryparken St. (Lyngbyvej)"
+                  },
+                  "departure_time": {
+                    "text": "11:59am",
+                    "time_zone": "Europe/Copenhagen",
+                    "value": 1622368740
+                  },
+                  "headsign": "Holte St.",
+                  "line": {
+                    "agencies": [
+                      {
+                        "name": "Movia",
+                        "url": "http://www.moviatrafik.dk/"
+                      }
+                    ],
+                    "short_name": "184",
+                    "vehicle": {
+                      "icon": "//maps.gstatic.com/mapfiles/transit/iw2/6/bus2.png",
+                      "name": "Bus",
+                      "type": "BUS"
+                    }
+                  },
+                  "num_stops": 20,
+                  "trip_short_name": "18400045"
+                },
+                "travel_mode": "TRANSIT"
+              },
+              {
+                "distance": {
+                  "text": "0.4 km",
+                  "value": 391
+                },
+                "duration": {
+                  "text": "5 mins",
+                  "value": 271
+                },
+                "end_location": {
+                  "lat": 55.79593440000001,
+                  "lng": 12.4846088
+                },
+                "html_instructions": "Walk to Holmekrogen 71, 2830 Virum, Denmark",
+                "polyline": {
+                  "points": "}bpsI_kekA}@f@aAd@y@d@K{@[cCgFvCMLg@^I}@IuA"
+                },
+                "start_location": {
+                  "lat": 55.7932749,
+                  "lng": 12.4844799
+                },
+                "steps": [
+                  {
+                    "distance": {
+                      "text": "0.1 km",
+                      "value": 109
+                    },
+                    "duration": {
+                      "text": "1 min",
+                      "value": 74
+                    },
+                    "end_location": {
+                      "lat": 55.7941965,
+                      "lng": 12.4838972
+                    },
+                    "html_instructions": "Head <b>north</b> on <b>Kongevejen</b>/<wbr/><b>Route 201</b> toward <b>Lindevangen</b>",
+                    "polyline": {
+                      "points": "}bpsI_kekA}@f@aAd@y@d@"
+                    },
+                    "start_location": {
+                      "lat": 55.7932749,
+                      "lng": 12.4844799
+                    },
+                    "travel_mode": "WALKING"
+                  },
+                  {
+                    "distance": {
+                      "text": "64 m",
+                      "value": 64
+                    },
+                    "duration": {
+                      "text": "1 min",
+                      "value": 50
+                    },
+                    "end_location": {
+                      "lat": 55.7944009,
+                      "lng": 12.4848554
+                    },
+                    "html_instructions": "Turn <b>right</b> onto <b>Lindevangen</b>",
+                    "maneuver": "turn-right",
+                    "polyline": {
+                      "points": "whpsIkgekAK{@[cC"
+                    },
+                    "start_location": {
+                      "lat": 55.7941965,
+                      "lng": 12.4838972
+                    },
+                    "travel_mode": "WALKING"
+                  },
+                  {
+                    "distance": {
+                      "text": "0.1 km",
+                      "value": 146
+                    },
+                    "duration": {
+                      "text": "2 mins",
+                      "value": 98
+                    },
+                    "end_location": {
+                      "lat": 55.7956319,
+                      "lng": 12.4840311
+                    },
+                    "html_instructions": "Turn <b>left</b> onto <b>Birkevang</b>",
+                    "maneuver": "turn-left",
+                    "polyline": {
+                      "points": "_jpsIkmekAgFvCML"
+                    },
+                    "start_location": {
+                      "lat": 55.7944009,
+                      "lng": 12.4848554
+                    },
+                    "travel_mode": "WALKING"
+                  },
+                  {
+                    "distance": {
+                      "text": "24 m",
+                      "value": 24
+                    },
+                    "duration": {
+                      "text": "1 min",
+                      "value": 16
+                    },
+                    "end_location": {
+                      "lat": 55.7958304,
+                      "lng": 12.4838709
+                    },
+                    "html_instructions": "Continue onto <b>Holmekrogen</b>",
+                    "polyline": {
+                      "points": "uqpsIehekAg@^"
+                    },
+                    "start_location": {
+                      "lat": 55.7956319,
+                      "lng": 12.4840311
+                    },
+                    "travel_mode": "WALKING"
+                  },
+                  {
+                    "distance": {
+                      "text": "48 m",
+                      "value": 48
+                    },
+                    "duration": {
+                      "text": "1 min",
+                      "value": 33
+                    },
+                    "end_location": {
+                      "lat": 55.79593440000001,
+                      "lng": 12.4846088
+                    },
+                    "html_instructions": "Turn <b>right</b> to stay on <b>Holmekrogen</b><div style=\"font-size:0.9em\">Destination will be on the right</div>",
+                    "maneuver": "turn-right",
+                    "polyline": {
+                      "points": "}rpsIegekAI}@IuA"
+                    },
+                    "start_location": {
+                      "lat": 55.7958304,
+                      "lng": 12.4838709
+                    },
+                    "travel_mode": "WALKING"
+                  }
+                ],
+                "travel_mode": "WALKING"
+              }
+            ],
+            "traffic_speed_entry": [],
+            "via_waypoint": []
+          }
+        ],
+        "overview_polyline": {
+          "points": "uy~rI_pnkAnBpBb@r@`BtC\\h@b@yAT{@jA_EvBgHh@qB`@qDbAsJd@}FNBLmAFk@FUn@l@?GYEsASyA_@}Bs@yD{AgAe@aAm@sAaAaF_FyB_Ca@i@u@kAq@_Aq@iA}AsCa@}@e@kAgAwCwA_F{AiGuDoOmAaFsAeFy@_COa@m@uAu@{Ay@wAoAyB{BwD_AeBuDwGmBcDa@q@g@w@DKB^s@X@Ji@TWFgANs@B_@Fw@`@o@l@_@^QJm@ZmEfBYVKDuEhBsD~@kDrAKNkAb@eC`Ao@TMNsBx@}Ar@y@b@cBhAeBbB]X[`@aGvGwB`C}DhEgCvCaBjBwCzCkDvDkArAgJtKsB|BwHhIwAdBoAtAgDvDoClCcH`IkBnBmC|CaAbAa@j@gCfCmElEsExEyDbEqDrDkBtByFxG_C|CcBjC{AvBsCxDgBzBqDhEwC~C}DnEq@n@wAnAm@b@UFm@Jw@Da@H_@Ni@`@Y\\_@j@Ur@{@fCYp@W^g@p@{BhCm@p@cBjBoEzEkBxAwAbAUVi@b@e@d@U^Yn@[tAEVu@vFe@jBOb@e@r@WPECI@KFCF]`@]Nq@PIDS?c@Cu@Fi@TODa@^MCKJiBrBcDzDiFxFwAtAi@Z}@XMBWIMh@U`ASj@QV]l@YZS^mBdC_@j@r@dCL\\wAdFK`@a@`DWvAYtAQr@Gh@u@nC_ApBeAlBg@p@g@RW?iA]cBa@gCy@]Qa@S?GAKCIKCIFCP?DIDWVk@v@Yp@gA~A}AjBqE|EaJnJiDnDcEbEeCbBqGtD{CfB{@TsAp@gBz@uCjB}D~B}BlAaEdCwBlAeAf@o@b@w@j@e@d@c@x@Uj@GAWBcA`@oBt@}Bx@k@VOPiAb@oB~@cAf@]T{@f@{E|CeB`A_ClAy@d@K{@[cCgFvCu@l@SsC"
+        },
+        "summary": "",
+        "warnings": [
+          "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+        ],
+        "waypoint_order": []
+      }
+    ],
+    "status": "OK"
+  }

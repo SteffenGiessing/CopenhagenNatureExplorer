@@ -15,8 +15,7 @@ class PostController {
   StorageRepo _storageRepo = locator.get<StorageRepo>();
 
   FirebaseRepo _fireRepo = locator.get<FirebaseRepo>();
-  // StorageRepo _storageRepo = locator.get<StorageRepo>();
-  // FirebaseRepo _firebaseRepo = locator.get<FirebaseRepo>();
+ 
 
   PostController() {
     init = initUser();

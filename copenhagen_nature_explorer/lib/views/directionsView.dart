@@ -1,12 +1,10 @@
 import 'dart:async';
-import 'package:copenhagen_nature_explorer/models/metersToMarkers.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:copenhagen_nature_explorer/models/markersModel.dart';
 import 'package:copenhagen_nature_explorer/view_controller/markers_controller.dart';
 import 'package:copenhagen_nature_explorer/locator.dart';
-import 'package:google_directions_api/google_directions_api.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DirectionsView extends StatefulWidget {
   static String route = "directions";
@@ -16,13 +14,21 @@ class DirectionsView extends StatefulWidget {
 }
 
 class _DirectionsViewState extends State<DirectionsView> {
-  //Text to instansiate with the distance.
-  TextEditingController _distanceStationToDestination = TextEditingController();
-  TextEditingController _distanceLocationToStation = TextEditingController();
-
+  
   //Markers and Polylines final list.
   final Set<Marker> markers = {};
   final Set<Polyline> _polyline = {};
+
+  //Nearest Station
+  NearestStation _nearestStation;
+ 
+  //PolyLines
+  List<LatLng> latLineOne;
+  List<LatLng> latLineTwo;
+
+  //Routes Lists
+  List<String> transportRoute;
+  List<String> transportWalking;
 
   //GoogleMapController.
   GoogleMapController controller;
@@ -30,35 +36,40 @@ class _DirectionsViewState extends State<DirectionsView> {
   //Getting Markers.
   var gettingMarkers;
 
+  //Building Route
+  var builtTransitRoute;
+  var builtWalkingRoute;
+
+  //int length;
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   //Init
   @override
   void initState() {
     super.initState();
     _onMapCreated(controller);
-    _setUpDistance();
   }
 
+  //Map View with a floating button
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Directions"),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () {},
-          ),
-        ],
+        title: Text("Directions "),
       ),
       body: Container(
         child: new Column(
           children: [
             new Container(
-              height: 630,
+              height: 708,
               width: double.infinity,
               child: GoogleMap(
                 initialCameraPosition: CameraPosition(
-                  target: LatLng(55.7046696, 12.5314824), zoom: 13),
+                    target: LatLng(55.7046696, 12.5314824), zoom: 13),
                 onMapCreated: _onMapCreated,
                 markers: Set.of(markers),
                 mapToolbarEnabled: false,
@@ -66,110 +77,135 @@ class _DirectionsViewState extends State<DirectionsView> {
                 polylines: Set.of(_polyline),
               ),
             ),
-            new Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(8.0),
-                    topRight: Radius.circular(8.0),
-                  ),
-                ),
-                ListTile(
-                  title: Text("Blueline: Distance to marker.  " +
-                      _distanceLocationToStation.text +
-                      " M"),
-                  subtitle: Text("Redline: Distance to marker.  " +
-                      _distanceStationToDestination.text +
-                      " M"),
-                ),
-              ],
-            ),
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () async {
+          routeDetailsDialog();
+        },
+        icon: Icon(Icons.directions_transit_outlined),
+        backgroundColor: Colors.green,
+        label: const Text("See Complete Route"),
+      ),
     );
+  }
+  
+  //Opens Dialog with routes details.
+  void routeDetailsDialog() {
+    transportRoute = builtTransitRoute.transportTransit;
+    transportWalking = builtWalkingRoute.transportWalking;
+    showGeneralDialog(
+        barrierLabel: "barrier",
+        barrierDismissible: true,
+        barrierColor: Colors.black.withOpacity(0.5),
+        transitionDuration: Duration(milliseconds: 450),
+        context: context,
+        pageBuilder: (BuildContext buildContext, Animation<double> animation,
+            Animation<double> secondary) {
+          return Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: 300,
+              padding: const EdgeInsets.all(10.0),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(8.0),
+                  ),
+                ),
+                child: SingleChildScrollView(
+                  child: Column(children: <Widget>[
+                    ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(8.0),
+                        topRight: Radius.circular(8.0),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.blue,
+                      thickness: 5,
+                    ),
+                    for (var i in transportRoute)
+                      ListTile(
+                        title: Text("$i \n"),
+                        subtitle: Divider(color: Colors.blue, thickness: 2,),
+                      ),
+                    Divider(
+                      color: Colors.red,
+                      thickness: 5,
+                    ),
+                    for (var iw in transportWalking)
+                      ListTile(
+                        title: Text("$iw \n"),
+                        subtitle: Divider(color: Colors.red, thickness: 2,),
+                      ),
+                  ]),
+                ),
+              ),
+            ),
+          );
+        });
   }
 
   //Method: to setup Map.
   Future _onMapCreated(GoogleMapController controllerParam) async {
-    DirectionsService.init("AIzaSyBC-3s8CcMfSKWMoU96Bkb3c3gQ34QVdHM");
-    var directionService = DirectionsService();
-    // var directionReder = new DirectionsResult.fromMap(controllerParam);
     //Locator Getter to recieve nearest station.
-    NearestStation _nearestStation =
-        locator.get<MarkersController>().nearestStation;
+    _nearestStation = locator.get<MarkersController>().nearestStation;
 
     //Call getClosestStation and create markers.
     gettingMarkers = await MarkersController().getClosestStation();
+    markers.addAll(gettingMarkers);
 
     //Create List to feed into polyLine which contains the coordinates between the markers.
-    List<LatLng> latLineOne = await MarkersController()
+    latLineOne = await MarkersController()
         .userLocationToStation(_nearestStation.nearestStation);
 
     //Create List to feed into polyLine which contains the coordinates between the markers.
-    List<LatLng> latLineTwo = await MarkersController()
+    latLineTwo = await MarkersController()
         .stationToDestination(_nearestStation.nearestStation);
 
-    //Create the values between each markers in meters.
-    _setUpDistance();
+    //Building paramteres for polylines User Location To Station
+    final locationToStation = await MarkersController().getLocationToStation(
+        location: latLineOne.first, station: latLineOne.last);
 
+    //Building parameters for polyline Station to Destination
+    final stationToDestination = await MarkersController()
+        .getStationToDestination(
+            station: latLineTwo.first, destination: latLineTwo.last);
+
+    //Creating paramteres for transit directions
+    builtTransitRoute = await MarkersController()
+        .builtRoute(latLineOne.first, latLineOne.last, "transit");
+
+    //Creating paramteres for walking directions
+    builtWalkingRoute = await MarkersController()
+        .builtRoute(latLineTwo.first, latLineTwo.last, "walking");
+
+    //Setting first polyline -> LocationToStation
+    _polyline.add(
+      Polyline(
+          polylineId: PolylineId("Location to Station"),
+          visible: true,
+          width: 2,
+          color: Colors.blue,
+          points: locationToStation),
+    );
+
+    //Setting second polyline -> stationToDestination
+    _polyline.add(
+      Polyline(
+        polylineId: PolylineId("station to destination"),
+        visible: true,
+        width: 2,
+        color: Colors.red,
+        points: stationToDestination,
+      ),
+    );
     //SetState for Markers and Polylines on Map.
     setState(() {
       //Goole Map controller
       controller = controllerParam;
-
-      //First PolyLine -> User Location to Station.
-      _polyline.add(Polyline(
-        polylineId: PolylineId('Location to Station.'),
-        visible: true,
-        points: latLineOne,
-        width: 2,
-        color: Colors.blue,
-      ));
-
-      //Second PolyLine -> User Location to Station.
-      _polyline.add(Polyline(
-        polylineId: PolylineId('Station to Destination.'),
-        visible: true,
-        points: latLineTwo,
-        width: 2,
-        color: Colors.red,
-      ));
-
-      final request = DirectionsRequest(
-          origin: 'Copenhagen',
-          destination: 'Stockholm',
-          travelMode: TravelMode.bicycling);
-      directionService.route(request,
-          (DirectionsResult response, DirectionsStatus status) {
-        if (status == DirectionsStatus.ok) {
-         // response.routes
-          print("Success");
-        } else {
-          print("We have an error with direction");
-        }
-      });
-      //Add all markers to markers list.
-      markers.addAll(gettingMarkers);
-    });
-  }
-
-//LatLng(55.704798171435954, 12.531552659435617)
-//LatLng(55.71853087264182, 12.533084640916831)
-  //Method: To create setState for the distance between markers.
-  Future _setUpDistance() async {
-    //instantiate modal class.
-    MetersToMarkers _metersToMarkers =
-        await MarkersController().setupMetersToMarkers();
-
-    //SetState for the distance.
-    setState(() {
-      _distanceLocationToStation.text =
-          _metersToMarkers.metersFromLocationToStation.toString();
-
-      _distanceStationToDestination.text =
-          _metersToMarkers.metersFromStationToDestination.toString();
     });
   }
 }

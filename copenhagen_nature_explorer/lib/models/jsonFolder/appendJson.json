@@ -1,0 +1,306 @@
+{
+    "geocoded_waypoints": [
+      {
+        "geocoder_status": "OK",
+        "place_id": "ChIJh_ETJPlOUkYRPH5oR34b0vk",
+        "types": [
+          "premise"
+        ]
+      },
+      {
+        "geocoder_status": "OK",
+        "place_id": "ChIJTaJ8-3ZPUkYRhDYlQOZEOxE",
+        "types": [
+          "route"
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "bounds": {
+          "northeast": {
+            "lat": 55.8002409,
+            "lng": 12.4846088
+          },
+          "southwest": {
+            "lat": 55.79315709999999,
+            "lng": 12.4295871
+          }
+        },
+        "copyrights": "Map data ©2021",
+        "legs": [
+          {
+            "distance": {
+              "text": "4.3 km",
+              "value": 4270
+            },
+            "duration": {
+              "text": "53 mins",
+              "value": 3195
+            },
+            "end_address": "Unnamed Road, 2830 Virum, Denmark",
+            "end_location": {
+              "lat": 55.8002409,
+              "lng": 12.4295871
+            },
+            "start_address": "Holmekrogen 71, 2830 Virum, Denmark",
+            "start_location": {
+              "lat": 55.79593440000001,
+              "lng": 12.4846088
+            },
+            "steps": [
+              {
+                "distance": {
+                  "text": "48 m",
+                  "value": 48
+                },
+                "duration": {
+                  "text": "1 min",
+                  "value": 36
+                },
+                "end_location": {
+                  "lat": 55.7958304,
+                  "lng": 12.4838709
+                },
+                "html_instructions": "Head <b>west</b> on <b>Holmekrogen</b>",
+                "polyline": {
+                  "points": "qspsIykekAHtAH|@"
+                },
+                "start_location": {
+                  "lat": 55.79593440000001,
+                  "lng": 12.4846088
+                },
+                "travel_mode": "WALKING"
+              },
+              {
+                "distance": {
+                  "text": "0.1 km",
+                  "value": 122
+                },
+                "duration": {
+                  "text": "1 min",
+                  "value": 89
+                },
+                "end_location": {
+                  "lat": 55.7967987,
+                  "lng": 12.4829713
+                },
+                "html_instructions": "Turn <b>right</b> to stay on <b>Holmekrogen</b>",
+                "maneuver": "turn-right",
+                "polyline": {
+                  "points": "}rpsIegekAu@`AQXEDGFKHIFOLw@^MH"
+                },
+                "start_location": {
+                  "lat": 55.7958304,
+                  "lng": 12.4838709
+                },
+                "travel_mode": "WALKING"
+              },
+              {
+                "distance": {
+                  "text": "45 m",
+                  "value": 45
+                },
+                "duration": {
+                  "text": "1 min",
+                  "value": 35
+                },
+                "end_location": {
+                  "lat": 55.796632,
+                  "lng": 12.4823132
+                },
+                "html_instructions": "Turn <b>left</b> toward <b>Kongevejen</b>/<wbr/><b>Route 201</b>",
+                "maneuver": "turn-left",
+                "polyline": {
+                  "points": "_ypsIqaekAR|ALd@"
+                },
+                "start_location": {
+                  "lat": 55.7967987,
+                  "lng": 12.4829713
+                },
+                "travel_mode": "WALKING"
+              },
+              {
+                "distance": {
+                  "text": "61 m",
+                  "value": 61
+                },
+                "duration": {
+                  "text": "1 min",
+                  "value": 44
+                },
+                "end_location": {
+                  "lat": 55.79714329999999,
+                  "lng": 12.4819807
+                },
+                "html_instructions": "Turn <b>right</b> onto <b>Kongevejen</b>/<wbr/><b>Route 201</b>",
+                "maneuver": "turn-right",
+                "polyline": {
+                  "points": "}wpsIm}dkAULoAr@"
+                },
+                "start_location": {
+                  "lat": 55.796632,
+                  "lng": 12.4823132
+                },
+                "travel_mode": "WALKING"
+              },
+              {
+                "distance": {
+                  "text": "1.1 km",
+                  "value": 1127
+                },
+                "duration": {
+                  "text": "15 mins",
+                  "value": 875
+                },
+                "end_location": {
+                  "lat": 55.7944232,
+                  "lng": 12.4647029
+                },
+                "html_instructions": "Turn <b>left</b> onto <b>Frederiksdalsvej</b>",
+                "maneuver": "turn-left",
+                "polyline": {
+                  "points": "c{psIk{dkAFf@NjAF^D`@L`APxABPZzBR|AHl@^bDF`@b@dDb@hDD\\JfAF|@JlAEZVnEDb@B^FdAX|DFv@BZFx@LnBHPDl@@PFx@f@nHHvA@NvAtT"
+                },
+                "start_location": {
+                  "lat": 55.79714329999999,
+                  "lng": 12.4819807
+                },
+                "travel_mode": "WALKING"
+              },
+              {
+                "distance": {
+                  "text": "29 m",
+                  "value": 29
+                },
+                "duration": {
+                  "text": "1 min",
+                  "value": 27
+                },
+                "end_location": {
+                  "lat": 55.7945572,
+                  "lng": 12.4643659
+                },
+                "html_instructions": "Turn <b>right</b> toward <b>Kirkebakken</b>",
+                "maneuver": "turn-right",
+                "polyline": {
+                  "points": "cjpsIkoakAMFCDCFAHADAH?B?L"
+                },
+                "start_location": {
+                  "lat": 55.7944232,
+                  "lng": 12.4647029
+                },
+                "travel_mode": "WALKING"
+              },
+              {
+                "distance": {
+                  "text": "0.2 km",
+                  "value": 212
+                },
+                "duration": {
+                  "text": "3 mins",
+                  "value": 157
+                },
+                "end_location": {
+                  "lat": 55.7954269,
+                  "lng": 12.4614531
+                },
+                "html_instructions": "Turn <b>right</b> onto <b>Kirkebakken</b>",
+                "maneuver": "turn-right",
+                "polyline": {
+                  "points": "_kpsIimakAWTSTO^Mf@S~Ao@pF_@`C"
+                },
+                "start_location": {
+                  "lat": 55.7945572,
+                  "lng": 12.4643659
+                },
+                "travel_mode": "WALKING"
+              },
+              {
+                "distance": {
+                  "text": "1.0 km",
+                  "value": 1046
+                },
+                "duration": {
+                  "text": "13 mins",
+                  "value": 807
+                },
+                "end_location": {
+                  "lat": 55.79315709999999,
+                  "lng": 12.445623
+                },
+                "html_instructions": "Continue onto <b>Søndervej</b>",
+                "polyline": {
+                  "points": "mppsIa{`kAa@vBGb@AZBTl@rFn@pG`AnJDj@JnKHzE@dB@Z?j@DbA@LVxA|@pF^pBLt@f@tCD\\\\rBL`AZdBN`AZzB"
+                },
+                "start_location": {
+                  "lat": 55.7954269,
+                  "lng": 12.4614531
+                },
+                "travel_mode": "WALKING"
+              },
+              {
+                "distance": {
+                  "text": "1.1 km",
+                  "value": 1053
+                },
+                "duration": {
+                  "text": "12 mins",
+                  "value": 739
+                },
+                "end_location": {
+                  "lat": 55.80020210000001,
+                  "lng": 12.4355732
+                },
+                "html_instructions": "Turn <b>right</b> onto <b>Furesøvej</b>",
+                "maneuver": "turn-right",
+                "polyline": {
+                  "points": "gbpsIcx}jAgCfDOTS\\i@dAGL[p@Wr@CF_@bAOJa@`Bg@xAe@lAo@dBsCvHQj@s@nBc@jACHEFg@rAQ\\KRCBm@t@g@h@SREF_@b@[\\[LuATwCZO@ICKBQFc@JIDEFGLCLAHADE`@CXCZCLCJ"
+                },
+                "start_location": {
+                  "lat": 55.79315709999999,
+                  "lng": 12.445623
+                },
+                "travel_mode": "WALKING"
+              },
+              {
+                "distance": {
+                  "text": "0.5 km",
+                  "value": 527
+                },
+                "duration": {
+                  "text": "6 mins",
+                  "value": 386
+                },
+                "end_location": {
+                  "lat": 55.8002409,
+                  "lng": 12.4295871
+                },
+                "html_instructions": "Turn <b>left</b><div style=\"font-size:0.9em\">Destination will be on the left</div>",
+                "maneuver": "turn-left",
+                "polyline": {
+                  "points": "gnqsIiy{jAHDN@LCH?JBHJRHRBHNBBHZLxFDVHFHBVXb@t@HLR\\DT?TCp@Ot@I`@IZOn@YnAOdACHEPKT]r@c@z@s@|A[\\MH"
+                },
+                "start_location": {
+                  "lat": 55.80020210000001,
+                  "lng": 12.4355732
+                },
+                "travel_mode": "WALKING"
+              }
+            ],
+            "traffic_speed_entry": [],
+            "via_waypoint": []
+          }
+        ],
+        "overview_polyline": {
+          "points": "qspsIykekARrCgAzAc@^gAl@MHR|ALd@ULoAr@Ff@VjBRbBdAdItAxKh@fERdCJlAEZ\\rFl@zIJtALnBHPF~@n@hJJfBvAtTMFGLCNAL?LWTSTO^Mf@S~AoArJi@zC@p@|AdOfAzKTjRB`CDnBvBjMxA|ItAdJwC|D}@bB_AzB_@bAOJa@`Bg@xAuArDsCvHQj@wAzDIPy@pBOVoBzB{@`A[LuATgD\\ICKBu@ROLOj@QdBCJHDN@LCH?JB\\TRBHNL^LxFDVRJVXb@t@\\j@DT?TCp@Ot@S|@i@~BSnAQf@aAnBs@|A[\\MH"
+        },
+        "summary": "Frederiksdalsvej",
+        "warnings": [
+          "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+        ],
+        "waypoint_order": []
+      }
+    ],
+    "status": "OK"
+  }

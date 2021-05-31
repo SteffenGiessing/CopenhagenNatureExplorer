@@ -4,7 +4,6 @@ import 'package:copenhagen_nature_explorer/views/directionsView.dart';
 import 'package:flutter/material.dart';
 import 'package:copenhagen_nature_explorer/views/homeView.dart';
 import 'package:copenhagen_nature_explorer/views/loginView.dart';
-import 'package:copenhagen_nature_explorer/views/profileView.dart';
 import 'package:copenhagen_nature_explorer/views/registerView.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -25,8 +24,7 @@ class MyApp extends StatelessWidget {
       home: HomeView(),
       routes: {
         HomeView.route: (context) => HomeView(),
-        LoginView.route: (context) => LoginView(),
-        ProfileView.route: (context) => ProfileView(),
+        LoginView.route: (context) => LoginView(),   
         RegisterView.route: (context) => RegisterView(),
         AddPostView.route: (context) => AddPostView(),
         DirectionsView.route: (context) => DirectionsView(),

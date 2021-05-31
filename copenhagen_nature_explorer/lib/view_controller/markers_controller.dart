@@ -1,17 +1,17 @@
 import 'dart:collection';
-import 'package:copenhagen_nature_explorer/models/directionHelper.dart';
-import 'package:copenhagen_nature_explorer/models/metersToMarkers.dart';
-import 'package:copenhagen_nature_explorer/repository/database_repo.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:copenhagen_nature_explorer/locator.dart';
+import 'package:copenhagen_nature_explorer/repository/database_repo.dart';
+import 'package:copenhagen_nature_explorer/repository/directionsRepository.dart';
+import 'package:copenhagen_nature_explorer/repository/mapHelper_repo.dart';
 import 'package:copenhagen_nature_explorer/models/markersModel.dart';
+import 'package:copenhagen_nature_explorer/models/directionsModel.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:copenhagen_nature_explorer/repository/calculateNearestStation_repo.dart';
 
 class MarkersController {
   MarkerCreator _markerCreator;
   RouteMarkers _routeMarkers;
   NearestStation _nearestStation;
-  MetersToMarkers _metersToMarkers;
   DirectionHelper _directionHelper = new DirectionHelper();
   FirebaseRepo _firebaseRepo = locator.get<FirebaseRepo>();
   Set<Marker> markers = new Set();
@@ -22,7 +22,6 @@ class MarkersController {
     init = initMarker();
     init = initRouteMarkers();
     init = initNearestStation();
-    init = initMetersToMarkers();
   }
   //Init MarkerCreator model under class markersModel.dart.
   Future<MarkerCreator> initMarker() async {
@@ -42,17 +41,11 @@ class MarkersController {
     return _nearestStation;
   }
 
-  //Init MetersToMarkers model under metersToMarkers.dart.
-  Future<MetersToMarkers> initMetersToMarkers() async {
-    _metersToMarkers = MetersToMarkers();
-    return _metersToMarkers;
-  }
-
   //Callers.
   MarkerCreator get marker => _markerCreator;
   RouteMarkers get markersList => _routeMarkers;
   NearestStation get nearestStation => _nearestStation;
-  MetersToMarkers get metersToMarkers => _metersToMarkers;
+ // MetersToMarkers get metersToMarkers => _metersToMarkers;
 
   //Creating markers for the Map.
   Future<HashMap<String, LatLng>> createMarkers() async {
@@ -68,22 +61,19 @@ class MarkersController {
         infoText: _markerCreator.infoText);
   }
 
-  //Calculates the closestStation to selected marker.
+  //Getting closest station and returning it as a marker
   Future<Set<Marker>> getClosestStation() async {
     MarkerCreator _currentMarker = locator.get<MarkersController>().marker;
-   
+
     NearestStation _nearestStation =
         locator.get<MarkersController>().nearestStation;
-    var getNearestStation = await _directionHelper.trainStations(
+    var getNearestStation = await _directionHelper.getTrainStations(
         _currentMarker.latitude, _currentMarker.longitude);
-
     _nearestStation.nearestStation = getNearestStation;
     markers = await _directionHelper.assambleMarkers(
         _nearestStation.nearestStation,
         _currentMarker.latitude,
         _currentMarker.longitude);
-       //await trainstationCalcFunc(
-       //_currentMarker.latitude, _currentMarker.longitude);
     return markers;
   }
 
@@ -92,6 +82,20 @@ class MarkersController {
       Map<String, LatLng> station) async {
     return await _directionHelper.userLocationToStation(station);
   }
+  //Getting user location to station
+  Future<List<LatLng>> getLocationToStation(
+      {@required LatLng location, @required LatLng station}) async {
+    var locationToStation = await DirectionsRepository()
+        .getLocationToStation(location: location, station: station);
+    return locationToStation;
+  }
+  //Getting Station to Destination
+  Future<List<LatLng>> getStationToDestination(
+      {@required LatLng station, @required LatLng destination}) async {
+    var stationToDesti = await DirectionsRepository()
+        .getStationToDestination(station: station, destination: destination);
+    return stationToDesti;
+  }
 
   //Creates Polyline form station to destination.
   Future<List<LatLng>> stationToDestination(Map<String, LatLng> station) async {
@@ -99,24 +103,12 @@ class MarkersController {
     return await _directionHelper.stationToDestination(
         station, _currentMarker.latitude, _currentMarker.longitude);
   }
-
-  //Setup distance between markers
-  Future<MetersToMarkers> setupMetersToMarkers() async {
-    //Getting marker that user have picked.
-    MarkerCreator _currentMarker = locator.get<MarkersController>().marker;
-    //Getting nearest Station to marker picked by user.
-    NearestStation _nearestStation =
-        locator.get<MarkersController>().nearestStation;
-
-    _metersToMarkers = await _directionHelper.metersToMarkers(
-        _currentMarker.latitude,
-        _currentMarker.longitude,
-        _nearestStation.nearestStation);
-
-    return MetersToMarkers(
-        metersFromLocationToStation:
-            _metersToMarkers.metersFromLocationToStation,
-        metersFromStationToDestination:
-            _metersToMarkers.metersFromStationToDestination);
+  //Calling BuildRoute - to create API request to recieve directions between two markers.
+  Future<Directions> builtRoute(
+      LatLng latlng1, LatLng latlng2, String mode) async {
+    var route =
+        await DirectionsRepository().buildRoute(latlng1, latlng2, mode);
+    return route;
   }
 }
+

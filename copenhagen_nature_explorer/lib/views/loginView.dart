@@ -29,8 +29,8 @@ class _LoginViewState extends State<LoginView> {
           ),
         ),
         child: Container(
-         // decoration: BoxDecoration(
-              //color: Colors.green, backgroundBlendMode: BlendMode.darken),
+          // decoration: BoxDecoration(
+          //color: Colors.green, backgroundBlendMode: BlendMode.darken),
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
@@ -47,65 +47,70 @@ class _LoginViewState extends State<LoginView> {
                 SizedBox(height: 50.0),
                 Expanded(
                   child: Container(
-                      decoration: BoxDecoration(
-                        color: Color(0xBBFFFFFF),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20.0),
-                        ),
+                    decoration: BoxDecoration(
+                      color: Color(0xBBFFFFFF),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20.0),
                       ),
-                      padding: EdgeInsets.all(20.0),
-                      child: Form(
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: <Widget>[
-                            TextFormField(
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(hintText: "Email"),
-                              controller: emailController,
+                    ),
+                    padding: EdgeInsets.all(20.0),
+                    child: Form(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          TextFormField(
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(hintText: "Email"),
+                            controller: emailController,
+                          ),
+                          TextFormField(
+                            keyboardType: TextInputType.visiblePassword,
+                            decoration: InputDecoration(hintText: "Password"),
+                            controller: passwordController,
+                          ),
+                          SizedBox(height: 10),
+                          ElevatedButton.icon(
+                            //color: Theme.of(context).primaryColor,
+                            icon: Icon(
+                              Icons.verified_user,
+                              color: textTheme.button.color,
                             ),
-                            TextFormField(
-                              keyboardType: TextInputType.visiblePassword,
-                              decoration: InputDecoration(hintText: "Password"),
-                              controller: passwordController,
+                            label: Text(
+                              "Sign in",
+                              style: textTheme.button,
                             ),
-                            SizedBox(height: 10),
-                            ElevatedButton.icon(
-                              //color: Theme.of(context).primaryColor,
+                            onPressed: () async {
+                              try {
+                                await locator
+                                    .get<UserController>()
+                                    .signInWithEmailAndPassword(
+                                        email: emailController.text,
+                                        password: passwordController.text);
+                                Navigator.pushNamed(context, HomeView.route);
+                              } catch (e) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        "Either Email or Password is wrong please try again"),
+                                  ),
+                                );
+                              }
+                            },
+                          ),
+                          ElevatedButton.icon(
                               icon: Icon(
-                                Icons.verified_user,
+                                Icons.add_circle_outline_outlined,
                                 color: textTheme.button.color,
                               ),
                               label: Text(
-                                "Sign in",
+                                "Register",
                                 style: textTheme.button,
                               ),
                               onPressed: () async {
-                                try {
-                                  await locator
-                                      .get<UserController>()
-                                      .signInWithEmailAndPassword(
-                                          email: emailController.text,
-                                          password: passwordController.text
-                                        );
-                                  Navigator.pushNamed(context, HomeView.route);
-                                } catch (e) {
-                                  print("Something went wrong");
-                                }
-                              },
-                            ),
-                            ElevatedButton.icon(
-                                icon: Icon(
-                                  Icons.add_circle_outline_outlined,
-                                  color: textTheme.button.color,
-                                ),
-                                label: Text(
-                                  "Register",
-                                  style: textTheme.button,
-                                ),
-                                onPressed: () async {
-                                    Navigator.pushNamed(context, RegisterView.route);
-                                }),
+                                Navigator.pushNamed(
+                                    context, RegisterView.route);
+                              }),
                         ],
                       ),
                     ),
