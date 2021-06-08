@@ -62,16 +62,17 @@ class FirebaseRepo {
         lot = double.parse(element["longitude"].toString());
         final LatLng latlot = new LatLng(lat, lot);
         listLatLng[element.id] = latlot;
+        print(element.id);
       });
     });
     return listLatLng;
   }
 
-  Future<LatLng> convertLatLng(double lat, double lot) async {
-    final LatLng latlot = new LatLng(lat, lot);
+  // Future<LatLng> convertLatLng(double lat, double lot) async {
+  //   final LatLng latlot = new LatLng(lat, lot);
 
-    return latlot;
-  }
+  //   return latlot;
+  // }
 
   Future<MarkerCreator> getMarkerInfo(String key) async {
     String displayName;

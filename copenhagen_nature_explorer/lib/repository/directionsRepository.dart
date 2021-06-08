@@ -14,7 +14,7 @@ class DirectionsRepository {
   PolylinePoints polylinePoints = PolylinePoints();
   List<LatLng> polylineCoordinates = [];
   DirectionsRepository({Dio dio}) : _dio = dio ?? Dio();
-  
+
   //Building the Polyline Route in between User Location and Station marker
   Future<List<LatLng>> getLocationToStation(
       {@required LatLng location, @required LatLng station}) async {
@@ -30,6 +30,7 @@ class DirectionsRepository {
 
     return polylineCoordinates;
   }
+
   //Building the Polyline Route in between Station and Destination marker
   Future<List<LatLng>> getStationToDestination(
       {@required LatLng station, @required LatLng destination}) async {
@@ -44,10 +45,11 @@ class DirectionsRepository {
     });
     return polylineCoordinates;
   }
+
   //Calling Directions API to get route details return a json format.
   Future<Directions> buildRoute(
       LatLng latlng1, LatLng latlng2, String mode) async {
-  
+    print("clicked");
     final response = await _dio.get(_baseUrl, queryParameters: {
       "origin": "${latlng1.latitude},${latlng1.longitude}",
       "destination": "${latlng2.latitude},${latlng2.longitude}",

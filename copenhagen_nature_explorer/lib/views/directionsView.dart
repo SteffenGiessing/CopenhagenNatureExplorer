@@ -151,35 +151,35 @@ class _DirectionsViewState extends State<DirectionsView> {
   //Method: to setup Map.
   Future _onMapCreated(GoogleMapController controllerParam) async {
     //Locator Getter to recieve nearest station.
-    _nearestStation = locator.get<MarkersController>().nearestStation;
+    _nearestStation =  locator.get<MarkersController>().nearestStation;
 
     //Call getClosestStation and create markers.
-    gettingMarkers = await MarkersController().getClosestStation();
+    gettingMarkers = await locator.get<MarkersController>().getClosestStation();
     markers.addAll(gettingMarkers);
 
     //Create List to feed into polyLine which contains the coordinates between the markers.
-    latLineOne = await MarkersController()
+    latLineOne = await locator.get<MarkersController>()
         .userLocationToStation(_nearestStation.nearestStation);
 
     //Create List to feed into polyLine which contains the coordinates between the markers.
-    latLineTwo = await MarkersController()
+    latLineTwo = await locator.get<MarkersController>()
         .stationToDestination(_nearestStation.nearestStation);
 
     //Building paramteres for polylines User Location To Station
-    final locationToStation = await MarkersController().getLocationToStation(
+    final locationToStation = await locator.get<MarkersController>().getLocationToStation(
         location: latLineOne.first, station: latLineOne.last);
 
     //Building parameters for polyline Station to Destination
-    final stationToDestination = await MarkersController()
+    final stationToDestination = await locator.get<MarkersController>()
         .getStationToDestination(
             station: latLineTwo.first, destination: latLineTwo.last);
 
     //Creating paramteres for transit directions
-    builtTransitRoute = await MarkersController()
+    builtTransitRoute = await locator.get<MarkersController>()
         .builtRoute(latLineOne.first, latLineOne.last, "transit");
 
     //Creating paramteres for walking directions
-    builtWalkingRoute = await MarkersController()
+    builtWalkingRoute = await locator.get<MarkersController>()
         .builtRoute(latLineTwo.first, latLineTwo.last, "walking");
 
     //Setting first polyline -> LocationToStation

@@ -82,6 +82,7 @@ class MarkersController {
       Map<String, LatLng> station) async {
     return await _directionHelper.userLocationToStation(station);
   }
+  
   //Getting user location to station
   Future<List<LatLng>> getLocationToStation(
       {@required LatLng location, @required LatLng station}) async {

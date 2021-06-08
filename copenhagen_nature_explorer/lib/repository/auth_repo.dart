@@ -24,22 +24,25 @@ class AuthRepo {
       Error();
     }
   }
+
   //Sign in with email and password
   Future<UserModel> signInWithEmailAndPassword(
       {String email, String password}) async {
     await _auth.signInWithEmailAndPassword(email: email, password: password);
     return getUser();
   }
+
   // Get User
   Future<UserModel> getUser() async {
-    var firebaseUser =  _auth.currentUser;
+    var firebaseUser = _auth.currentUser;
     var userName =
         await FirebaseRepo(uid: firebaseUser.uid).getUserDisplayName();
     return UserModel(uid: firebaseUser.uid, displayName: userName);
   }
+
   //Validate password for user upon login.
   Future<bool> validatePassword(String password) async {
-    var firebaseUser =  _auth.currentUser;
+    var firebaseUser = _auth.currentUser;
 
     var authCredentials = EmailAuthProvider.credential(
         email: firebaseUser.email, password: password);
@@ -49,7 +52,6 @@ class AuthRepo {
           await firebaseUser.reauthenticateWithCredential(authCredentials);
       return authResult.user != null;
     } catch (e) {
-      print(e);
       return false;
     }
   }

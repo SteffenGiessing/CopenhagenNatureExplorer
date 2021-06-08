@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:copenhagen_nature_explorer/.env.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:copenhagen_nature_explorer/locator.dart';
 import 'package:copenhagen_nature_explorer/models/userModel.dart';
@@ -7,7 +8,7 @@ import 'package:copenhagen_nature_explorer/repository/auth_repo.dart';
 class StorageRepo {
   firebase_storage.FirebaseStorage _storage =
       firebase_storage.FirebaseStorage.instanceFor(
-          bucket: "gs://copenhagennatureexplorer.appspot.com/");
+          bucket: bucket);
   AuthRepo _authRepo = locator.get<AuthRepo>();
 
   Future<String> uploadFile(File file) async {
@@ -21,13 +22,13 @@ class StorageRepo {
     return downloadUrl;
   }
 
-  Future<String> getUserProfileImage(String uid) async {
-    try {
-      return await _storage.ref().child("user/profile/$uid").getDownloadURL();
-    } catch (Exception) {
-      print("No picture found");
-    }
-  }
+  // Future<String> getUserProfileImage(String uid) async {
+  //   try {
+  //     return await _storage.ref().child("user/profile/$uid").getDownloadURL();
+  //   } catch (Exception) {
+  //     print("No picture found");
+  //   }
+  // }
 
   Future<String> uploadPostImage(File image, String imageName) async {
     //Google Storage have been giving me a lot of problems and i can see

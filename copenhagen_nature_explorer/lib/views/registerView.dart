@@ -102,14 +102,6 @@ class _RegisterViewState extends State<RegisterView> {
                 ],
               )),
         ),
-        // ElevatedButton.icon(
-        // icon: Icon(
-        //   Icons.ac_unit_outlined
-        //   ),
-        // label: Text("NotBad"),
-        // onPressed: () async {
-        //   print("Cliekced");
-        // },
       ),
     );
   }

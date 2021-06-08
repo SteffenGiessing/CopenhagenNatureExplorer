@@ -4,7 +4,6 @@ import 'package:copenhagen_nature_explorer/locator.dart';
 import 'package:flutter/services.dart';
 import 'dart:io';
 import 'package:copenhagen_nature_explorer/views/homeView.dart';
-import 'package:copenhagen_nature_explorer/locator.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddPostView extends StatefulWidget {
@@ -113,7 +112,10 @@ class _AddPostState extends State<AddPostView> {
 
                                 Navigator.pushNamed(context, HomeView.route);
                               } catch (e) {
-                               // print("Something went wrong");
+                                SnackBar(
+                                  content: Text(
+                                      "Incorrect values please try again."),
+                                );
                               }
                             },
                           ),

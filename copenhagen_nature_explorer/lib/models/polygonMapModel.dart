@@ -20,7 +20,7 @@ import 'package:flutter/material.dart';
 
     Set<Polygon> polygonSet = new Set();
     polygonSet.add(Polygon(
-        polygonId: PolygonId("Testing"),
+        polygonId: PolygonId("Polygon line"),
         points: polygonCordinats,
         fillColor: (Color.fromARGB(0, 0, 0, 0)),
         strokeColor: Colors.lightGreen,

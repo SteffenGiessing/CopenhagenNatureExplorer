@@ -8,7 +8,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:copenhagen_nature_explorer/models/polygonMapModel.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 
 class HomeView extends StatefulWidget {
   static String route = "home";
@@ -54,7 +53,6 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    var textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
         title: Text("Explorer"),

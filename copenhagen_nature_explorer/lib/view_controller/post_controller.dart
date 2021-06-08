@@ -10,6 +10,7 @@ class PostController {
   UserModel _currentUser;
   Location location = new Location();
   LocationData _locationData;
+  
   AuthRepo _authRepo = locator.get<AuthRepo>();
   Future init;
   StorageRepo _storageRepo = locator.get<StorageRepo>();
@@ -38,7 +39,7 @@ class PostController {
     String displayName = _currentUser.displayName;
     _locationData = await location.getLocation();
     String fileNameCreator =
-        "$displayName-${_locationData.latitude}-${_locationData.longitude}";
+        "$uid-${_locationData.latitude}-${_locationData.longitude}";
     String getImageUrl = await _storageRepo.uploadPostImage(image,fileNameCreator);
     await _fireRepo.addPost(
       uid: uid,
