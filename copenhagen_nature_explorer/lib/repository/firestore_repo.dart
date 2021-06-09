@@ -2,17 +2,11 @@ import 'dart:io';
 import 'dart:collection';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:copenhagen_nature_explorer/models/markersModel.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:copenhagen_nature_explorer/views/homeView.dart';
 
-class FirebaseRepo {
+class FirestoreRepo {
   final String uid;
-  FirebaseRepo({this.uid});
-  HomeView _homeView = new HomeView();
-  firebase_storage.FirebaseStorage _storage =
-      firebase_storage.FirebaseStorage.instanceFor(
-          bucket: "gs://copenhagennatureexplorer.appspot.com/");
+  FirestoreRepo({this.uid});
 
   CollectionReference firestore =
       FirebaseFirestore.instance.collection("users");
@@ -20,12 +14,20 @@ class FirebaseRepo {
   CollectionReference firestorePost =
       FirebaseFirestore.instance.collection("user posts");
 
+  CollectionReference firestoreStations =
+      FirebaseFirestore.instance.collection("trainStations");
+
+  /*
+    Create user and give them the uid and a displayname.
+  */
   Future createUserAccount(String displayName) async {
     return await firestore.doc(uid).set({
       "displayName": displayName,
     });
   }
-
+  /*
+    Getting userDisplayName.
+  */
   Future getUserDisplayName() async {
     String displayName;
     await firestore.doc(uid).get().then((snapShot) {
@@ -34,6 +36,9 @@ class FirebaseRepo {
     return displayName;
   }
 
+  /*
+    Add post to the firestore.
+  */
   Future<void> addPost(
       {String uid,
       File image,
@@ -52,6 +57,8 @@ class FirebaseRepo {
     });
   }
 
+  //Getting user posts. Storing it in a 
+  //hashmap with key as documentation ref and the coordinates as value.
   Future<HashMap<String, LatLng>> getUserPost() async {
     Map<String, LatLng> listLatLng = new HashMap<String, LatLng>();
     double lat;
@@ -62,18 +69,14 @@ class FirebaseRepo {
         lot = double.parse(element["longitude"].toString());
         final LatLng latlot = new LatLng(lat, lot);
         listLatLng[element.id] = latlot;
-        print(element.id);
       });
     });
     return listLatLng;
   }
 
-  // Future<LatLng> convertLatLng(double lat, double lot) async {
-  //   final LatLng latlot = new LatLng(lat, lot);
-
-  //   return latlot;
-  // }
-
+  /*
+    Getting information about the marker that user have clicked.
+  */
   Future<MarkerCreator> getMarkerInfo(String key) async {
     String displayName;
     String infoText;

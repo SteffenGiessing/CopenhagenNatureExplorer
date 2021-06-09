@@ -1,9 +1,9 @@
-import 'package:copenhagen_nature_explorer/view_controller/user_controller.dart';
-import 'package:copenhagen_nature_explorer/views/homeView.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:copenhagen_nature_explorer/locator.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:copenhagen_nature_explorer/view_controller/user_controller.dart';
+import 'package:copenhagen_nature_explorer/locator.dart';
+import 'package:copenhagen_nature_explorer/views/homeView.dart';
 
 class RegisterView extends StatefulWidget {
   static String route = "register-view";
@@ -37,7 +37,6 @@ class _RegisterViewState extends State<RegisterView> {
                   Center(
                     child: CircleAvatar(
                       backgroundColor: const Color(0x00000000),
-                      //backgroundImage: AssetImage("assets/images/logo.png"),
                       radius: 50.0,
                     ),
                   ),
@@ -75,7 +74,6 @@ class _RegisterViewState extends State<RegisterView> {
                               ),
                               SizedBox(height: 10),
                               ElevatedButton.icon(
-                                //color: Theme.of(context).primaryColor,
                                 icon: Icon(
                                   Icons.add,
                                 ),

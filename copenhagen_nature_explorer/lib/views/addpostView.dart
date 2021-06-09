@@ -1,10 +1,9 @@
-import 'package:copenhagen_nature_explorer/view_controller/post_controller.dart';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:copenhagen_nature_explorer/locator.dart';
-import 'package:flutter/services.dart';
-import 'dart:io';
-import 'package:copenhagen_nature_explorer/views/homeView.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:copenhagen_nature_explorer/views/homeView.dart';
+import 'package:copenhagen_nature_explorer/view_controller/post_controller.dart';
 
 class AddPostView extends StatefulWidget {
   static String route = "addpost";
@@ -15,6 +14,7 @@ class AddPostView extends StatefulWidget {
 
 class _AddPostState extends State<AddPostView> {
   var _infoText = TextEditingController();
+  //Creating ImagePicker
   final picker = ImagePicker();
   File _image;
 
@@ -29,6 +29,7 @@ class _AddPostState extends State<AddPostView> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
+            //Getting random picture as background
             image: NetworkImage("https://source.unsplash.com/1600x900/?nature"),
             fit: BoxFit.cover,
           ),
@@ -43,6 +44,7 @@ class _AddPostState extends State<AddPostView> {
                 Center(
                   child: GestureDetector(
                     onTap: () async {
+                      //OnTap putting imagepciekr to work and let the user pick from gallery.
                       final pickedFile =
                           await picker.getImage(source: ImageSource.gallery);
                       setState(() {
@@ -96,7 +98,6 @@ class _AddPostState extends State<AddPostView> {
                           ),
                           SizedBox(height: 10),
                           ElevatedButton.icon(
-                            //color: Theme.of(context).primaryColor,
                             icon: Icon(
                               Icons.local_post_office_outlined,
                               color: textTheme.button.color,
@@ -107,6 +108,7 @@ class _AddPostState extends State<AddPostView> {
                             ),
                             onPressed: () async {
                               try {
+                                //On addpost click try to create post
                                 await locator.get<PostController>().createPost(
                                     infoText: _infoText.text, image: _image);
 

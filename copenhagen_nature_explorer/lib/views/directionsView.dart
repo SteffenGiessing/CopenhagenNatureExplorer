@@ -14,17 +14,16 @@ class DirectionsView extends StatefulWidget {
 }
 
 class _DirectionsViewState extends State<DirectionsView> {
-  
   //Markers and Polylines final list.
   final Set<Marker> markers = {};
   final Set<Polyline> _polyline = {};
 
   //Nearest Station
   NearestStation _nearestStation;
- 
+
   //PolyLines
-  List<LatLng> latLineOne;
-  List<LatLng> latLineTwo;
+   List<LatLng> latLineOne;
+   List<LatLng> latLineTwo;
 
   //Routes Lists
   List<String> transportRoute;
@@ -40,7 +39,6 @@ class _DirectionsViewState extends State<DirectionsView> {
   var builtTransitRoute;
   var builtWalkingRoute;
 
-  //int length;
   @override
   void dispose() {
     controller.dispose();
@@ -90,7 +88,7 @@ class _DirectionsViewState extends State<DirectionsView> {
       ),
     );
   }
-  
+
   //Opens Dialog with routes details.
   void routeDetailsDialog() {
     transportRoute = builtTransitRoute.transportTransit;
@@ -129,7 +127,10 @@ class _DirectionsViewState extends State<DirectionsView> {
                     for (var i in transportRoute)
                       ListTile(
                         title: Text("$i \n"),
-                        subtitle: Divider(color: Colors.blue, thickness: 2,),
+                        subtitle: Divider(
+                          color: Colors.blue,
+                          thickness: 2,
+                        ),
                       ),
                     Divider(
                       color: Colors.red,
@@ -138,7 +139,10 @@ class _DirectionsViewState extends State<DirectionsView> {
                     for (var iw in transportWalking)
                       ListTile(
                         title: Text("$iw \n"),
-                        subtitle: Divider(color: Colors.red, thickness: 2,),
+                        subtitle: Divider(
+                          color: Colors.red,
+                          thickness: 2,
+                        ),
                       ),
                   ]),
                 ),
@@ -151,37 +155,46 @@ class _DirectionsViewState extends State<DirectionsView> {
   //Method: to setup Map.
   Future _onMapCreated(GoogleMapController controllerParam) async {
     //Locator Getter to recieve nearest station.
-    _nearestStation =  locator.get<MarkersController>().nearestStation;
+    _nearestStation = locator.get<MarkersController>().nearestStation;
 
     //Call getClosestStation and create markers.
     gettingMarkers = await locator.get<MarkersController>().getClosestStation();
     markers.addAll(gettingMarkers);
-
+    
     //Create List to feed into polyLine which contains the coordinates between the markers.
-    latLineOne = await locator.get<MarkersController>()
+    latLineOne = await locator
+        .get<MarkersController>()
         .userLocationToStation(_nearestStation.nearestStation);
-
+    print(latLineOne);
     //Create List to feed into polyLine which contains the coordinates between the markers.
-    latLineTwo = await locator.get<MarkersController>()
+    latLineTwo = await locator
+        .get<MarkersController>()
         .stationToDestination(_nearestStation.nearestStation);
 
     //Building paramteres for polylines User Location To Station
-    final locationToStation = await locator.get<MarkersController>().getLocationToStation(
-        location: latLineOne.first, station: latLineOne.last);
+    final locationToStation = await locator
+        .get<MarkersController>()
+        .getLocationToStation(
+            location: latLineOne.first, station: latLineOne.last);
 
     //Building parameters for polyline Station to Destination
-    final stationToDestination = await locator.get<MarkersController>()
+    final stationToDestination = await locator
+        .get<MarkersController>()
         .getStationToDestination(
-            station: latLineTwo.first, destination: latLineTwo.last);
+            station: latLineOne.last, destination: latLineTwo.last);
 
     //Creating paramteres for transit directions
-    builtTransitRoute = await locator.get<MarkersController>()
+    builtTransitRoute = await locator
+        .get<MarkersController>()
         .builtRoute(latLineOne.first, latLineOne.last, "transit");
 
     //Creating paramteres for walking directions
-    builtWalkingRoute = await locator.get<MarkersController>()
+    builtWalkingRoute = await locator
+        .get<MarkersController>()
         .builtRoute(latLineTwo.first, latLineTwo.last, "walking");
 
+    latLineOne.clear();
+    latLineTwo.clear();
     //Setting first polyline -> LocationToStation
     _polyline.add(
       Polyline(
@@ -204,6 +217,7 @@ class _DirectionsViewState extends State<DirectionsView> {
     );
     //SetState for Markers and Polylines on Map.
     setState(() {
+    
       //Goole Map controller
       controller = controllerParam;
     });

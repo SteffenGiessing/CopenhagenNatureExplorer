@@ -1,8 +1,8 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/material.dart';
-
+// Responsible for instantiating the values of the polygon coordinates and create a polygon and return it to Explorer View.
   Set<Polygon> polygonMap() {
-    // ignore: deprecated_member_use
+    //Polygon coordinates
     List<LatLng> polygonCordinats = new List();
     polygonCordinats.add(LatLng(55.50800858787899, 12.640172797687912));
     polygonCordinats.add(LatLng(55.52433653086542, 12.843419868000412));
@@ -17,7 +17,7 @@ import 'package:flutter/material.dart';
     polygonCordinats.add(LatLng(55.2333114533373, 12.443792182453537));
     polygonCordinats.add(LatLng(55.43951303319231, 12.574254828937912));
     polygonCordinats.add(LatLng(55.50270219979265, 12.651159125812912));
-
+    //Polygon being created. 
     Set<Polygon> polygonSet = new Set();
     polygonSet.add(Polygon(
         polygonId: PolygonId("Polygon line"),

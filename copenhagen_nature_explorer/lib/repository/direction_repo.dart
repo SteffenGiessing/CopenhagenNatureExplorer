@@ -11,9 +11,12 @@ class DirectionsRepository {
       "https://maps.googleapis.com/maps/api/directions/json?";
 
   final Dio _dio;
-  PolylinePoints polylinePoints = PolylinePoints();
-  List<LatLng> polylineCoordinates = [];
   DirectionsRepository({Dio dio}) : _dio = dio ?? Dio();
+
+  PolylinePoints polylinePoints = PolylinePoints();
+
+  List<LatLng> polylineCoordinates = [];
+  
 
   //Building the Polyline Route in between User Location and Station marker
   Future<List<LatLng>> getLocationToStation(
@@ -27,7 +30,6 @@ class DirectionsRepository {
     result.points.forEach((PointLatLng point) {
       polylineCoordinates.add(LatLng(point.latitude, point.longitude));
     });
-
     return polylineCoordinates;
   }
 
@@ -49,7 +51,6 @@ class DirectionsRepository {
   //Calling Directions API to get route details return a json format.
   Future<Directions> buildRoute(
       LatLng latlng1, LatLng latlng2, String mode) async {
-    print("clicked");
     final response = await _dio.get(_baseUrl, queryParameters: {
       "origin": "${latlng1.latitude},${latlng1.longitude}",
       "destination": "${latlng2.latitude},${latlng2.longitude}",

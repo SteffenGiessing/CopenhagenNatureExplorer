@@ -6,7 +6,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
 
 class DirectionHelper {
-
   //Map from Meters from station.
   HashMap<String, int> metersFromStation = new HashMap();
 
@@ -29,8 +28,10 @@ class DirectionHelper {
   //Responsible for finding the closest station to the current slected marker.
   Future<HashMap<String, LatLng>> getTrainStations(
       double currentMarkerLat, double currentMarkerLot) async {
+    if (nearestFinalStation.isNotEmpty) {
+      nearestFinalStation.clear();
+    }
     if (stations.isEmpty) {
-      
       //Database Call to get all stations
       var snapshot = await firestoreStations.get().then((querySnapshot) async {
         querySnapshot.docs.forEach((element) async {
@@ -63,7 +64,6 @@ class DirectionHelper {
         return nearestFinalStation;
       });
     } else {
-      
       stations.forEach((key, value) {
         //Iterates through each station in the list and convert the distance to meters.
         double distance = Geolocator.distanceBetween(currentMarkerLat,
@@ -118,7 +118,7 @@ class DirectionHelper {
     return markers;
   }
 
-  // Builds the parameters for polyline Coordinates for User location to Station 
+  // Builds the parameters for polyline Coordinates for User location to Station
   Future<List<LatLng>> userLocationToStation(
       Map<String, LatLng> station) async {
     _locationData = await location.getLocation();
@@ -129,8 +129,8 @@ class DirectionHelper {
     });
     return polyLinesCoordinates1;
   }
-  
-  // Builds the parameters for polyline Coordinates for Station to destination  
+
+  // Builds the parameters for polyline Coordinates for Station to destination
   Future<List<LatLng>> stationToDestination(Map<String, LatLng> station,
       double _currentMarkerlat, double _currentMarkerLot) async {
     station.forEach((key, value) async {

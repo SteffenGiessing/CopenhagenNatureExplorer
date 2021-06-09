@@ -24,13 +24,12 @@ class _LoginViewState extends State<LoginView> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
+            //Background image getting random picture from the link below.
             image: NetworkImage("https://source.unsplash.com/1600x900/?nature"),
             fit: BoxFit.cover,
           ),
         ),
         child: Container(
-          // decoration: BoxDecoration(
-          //color: Colors.green, backgroundBlendMode: BlendMode.darken),
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
@@ -40,7 +39,6 @@ class _LoginViewState extends State<LoginView> {
                 Center(
                   child: CircleAvatar(
                     backgroundColor: const Color(0x00000000),
-                    //backgroundImage: AssetImage("assets/images/logo.png"),
                     radius: 50.0,
                   ),
                 ),
@@ -71,7 +69,6 @@ class _LoginViewState extends State<LoginView> {
                           ),
                           SizedBox(height: 10),
                           ElevatedButton.icon(
-                            //color: Theme.of(context).primaryColor,
                             icon: Icon(
                               Icons.verified_user,
                               color: textTheme.button.color,

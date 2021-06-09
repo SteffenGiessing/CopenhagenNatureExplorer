@@ -4,13 +4,15 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:copenhagen_nature_explorer/locator.dart';
 import 'package:copenhagen_nature_explorer/models/userModel.dart';
 import 'package:copenhagen_nature_explorer/repository/auth_repo.dart';
-
+// Storage repo is handling all the picture management for the application.
 class StorageRepo {
+
   firebase_storage.FirebaseStorage _storage =
       firebase_storage.FirebaseStorage.instanceFor(
           bucket: bucket);
-  AuthRepo _authRepo = locator.get<AuthRepo>();
 
+  AuthRepo _authRepo = locator.get<AuthRepo>();
+  //Opload file.
   Future<String> uploadFile(File file) async {
     UserModel user = await _authRepo.getUser();
     var userId = user.uid;
@@ -21,14 +23,6 @@ class StorageRepo {
     String downloadUrl = await completedTask.ref.getDownloadURL();
     return downloadUrl;
   }
-
-  // Future<String> getUserProfileImage(String uid) async {
-  //   try {
-  //     return await _storage.ref().child("user/profile/$uid").getDownloadURL();
-  //   } catch (Exception) {
-  //     print("No picture found");
-  //   }
-  // }
 
   Future<String> uploadPostImage(File image, String imageName) async {
     //Google Storage have been giving me a lot of problems and i can see
@@ -46,17 +40,9 @@ class StorageRepo {
     return downloadUrl;
     */
     _storage.ref().child("user/post/$imageName").putFile(image);
-    sleep(const Duration(seconds: 5));
+    sleep(const Duration(seconds: 2));
     var downloadUrl =
         _storage.ref().child("user/post/$imageName").getDownloadURL();
     return downloadUrl;
-  }
-
-  Future<String> getMarkerPicture(String downloadUrl) async {
-    try {
-      return await _storage.ref().child("user/post/$downloadUrl").getDownloadURL();
-    } catch (Exception) {
-      print("No picture found");
-    }
   }
 }

@@ -10,6 +10,7 @@ import 'package:firebase_core/firebase_core.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  //Setting up my services -> For the service locator.
   setupServices();
   runApp(MyApp());
 }

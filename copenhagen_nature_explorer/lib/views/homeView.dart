@@ -27,15 +27,24 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     callMarkers();
     polygonMap();
-    setState(() {});
   }
-
+  /*
+  The initState from above should not call internally inside the class but call out of the class to a controller
+  Like with the polygonMap.
+  */
   void callMarkers() async {
     Map<String, LatLng> fetchedMarkers =
         await locator.get<MarkersController>().createMarkers();
     _createMarker(fetchedMarkers);
   }
-
+ /*
+  Fetching markers solution need to found so we can move this park out of the homeview.
+  I would like to create a solution where only 
+  setStat(() {
+     markers.add(resultMarker);
+  )})
+  Is being done in the view.
+  */
   void _createMarker(Map<String, LatLng> fetchedMarkers) {
     fetchedMarkers.forEach((key, value) {
       Marker resultMarker = Marker(
@@ -56,8 +65,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Explorer"),
-        actions: <Widget>[
-        ],
+        actions: <Widget>[],
       ),
       body: GoogleMap(
         polygons: polygonMap(),
@@ -80,7 +88,7 @@ class _HomeViewState extends State<HomeView> {
       ),
     );
   }
-  
+
   void showAddPost(MarkerCreator markerCreator) {
     var textTheme = Theme.of(context).textTheme;
     MarkerCreator _currentMarker = locator.get<MarkersController>().marker;
